@@ -1,5 +1,6 @@
 import { Client } from "../entities/Client";
 import { ClientRepository } from "../repositories/clientRepository";
+import { randomUUID } from "node:crypto";
 
 type CreateClientRequest ={
     name: string;
@@ -18,7 +19,8 @@ export class CreateClient {
 
     async execute(request: CreateClientRequest): Promise<CreateClientResponse> {
 
-        const client = new Client(request);
+        const id = randomUUID();
+        const client = new Client(request, id);
 
         await this.clientRepository.create(client);
 

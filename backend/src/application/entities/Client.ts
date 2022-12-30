@@ -7,9 +7,12 @@ type ClientProps = {
 }
 
 export class Client {
+    private _id: string;
     private props: ClientProps;
 
-    constructor(props: ClientProps){
+    constructor(props: ClientProps, id: string){
+
+        this._id = id;
         this.props = props;
     }
 
@@ -30,5 +33,9 @@ export class Client {
 
     public get address(){
         return this.props.address;
+    }
+
+    public get id() {
+        return this._id;
     }
 }

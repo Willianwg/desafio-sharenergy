@@ -1,3 +1,4 @@
+import { randomUUID } from "node:crypto";
 import { User } from "../entities/User";
 import { UserRepository } from "../repositories/userRepository";
 
@@ -15,7 +16,8 @@ export class CreateUser {
 
     async execute(request: CreateUserRequest): Promise<CreateUserResponse> {
 
-        const user = new User(request);
+        const id = randomUUID();
+        const user = new User(request, id);
 
         await this.userRepository.create(user);
 
