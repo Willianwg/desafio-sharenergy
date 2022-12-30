@@ -10,7 +10,7 @@ body * {
 .main-login {
     width: 100vw;
     height: 100vh;
-    background: rgba(190, 255, 219, 0.867);
+    background: rgba(108, 241, 168, 0.867);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,7 +48,7 @@ body * {
     padding: 30px 35px;
     background: #ffffff;
     border-radius: 20px;
-    box-shadow: 0px 10px 40px #00000056;
+    box-shadow: 0px 10px 40px -5px #11b69a;
 }
 
 .card-login>h1 {
@@ -79,10 +79,6 @@ body * {
     box-sizing: border-box;
 } 
 
-::-ms-reveal {
-    filter: invert(70%);
-  }
-
 .textfield>input::placeholder {
     color:rgb(107, 105, 105);
 }
@@ -102,7 +98,7 @@ body * {
 }
 
 .checkbox {
-    margin-right: 5px;
+    margin-inline: 5px;
 }
 
 .btn-login {
