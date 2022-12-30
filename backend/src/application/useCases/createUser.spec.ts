@@ -14,8 +14,6 @@ describe("Create User", ()=>{
 
         const isPasswordValid = await PasswordAuth.compare("sh@r3n3rgy", user.password);
 
-        console.log(isPasswordValid);
-
         expect(user).toHaveProperty("id");
         expect(user.password === "sh@r3n3rgy").toBeFalsy();
         expect(isPasswordValid).toBeTruthy();

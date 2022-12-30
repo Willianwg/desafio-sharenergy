@@ -1,6 +1,8 @@
 import { User } from "../entities/User";
 import { PasswordAuth } from "../helpers/passwordAuth";
 import { UserRepository } from "../repositories/userRepository";
+import { InvalidPassword } from "./errors/InvalidPassword";
+import { UserNotFound } from "./errors/userNotFound";
 
 type LoginRequest = {
     username: string;
@@ -18,13 +20,13 @@ export class Login {
         const user = await this.userRepository.findByUsername(request.username);
 
         if(!user){
-            throw new Error("User doesn't exists.");
+            throw new UserNotFound();
         }
 
         const isPasswordValid = await PasswordAuth.compare(request.password, user.password);
 
         if(!isPasswordValid){
-            throw new Error("Invalid password.");
+            throw new InvalidPassword();
         }
 
         return {
