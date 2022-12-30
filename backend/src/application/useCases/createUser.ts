@@ -1,6 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { User } from "../entities/User";
 import { UserRepository } from "../repositories/userRepository";
+import * as bcrypt from "bcryptjs";
 
 type CreateUserRequest ={
     username: string;
@@ -17,7 +18,11 @@ export class CreateUser {
     async execute(request: CreateUserRequest): Promise<CreateUserResponse> {
 
         const id = randomUUID();
-        const user = new User(request, id);
+        const encryptedPassword = await bcrypt.hash(request.password, 10);
+        const user = new User({
+            username: request.username,
+            password: encryptedPassword,
+        }, id);
 
         await this.userRepository.create(user);
 

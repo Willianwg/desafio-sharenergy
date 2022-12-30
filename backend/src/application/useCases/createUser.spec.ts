@@ -1,5 +1,6 @@
 import { inMemoryUserRepository } from "../../../test/repositories/inMemory/userRepository";
 import { CreateUser } from "./createUser"
+import { PasswordAuth } from "../helpers/passwordAuth";
 
 describe("Create User", ()=>{
     it("should be able to create an user", async ()=>{
@@ -11,7 +12,13 @@ describe("Create User", ()=>{
             password: "sh@r3n3rgy",
         })
 
+        const isPasswordValid = await PasswordAuth.compare("sh@r3n3rgy", user.password);
+
+        console.log(isPasswordValid);
+
         expect(user).toHaveProperty("id");
-        expect(userRepository.users[0].password).toEqual("sh@r3n3rgy");
+        expect(user.password === "sh@r3n3rgy").toBeFalsy();
+        expect(isPasswordValid).toBeTruthy();
+
     })
 })
