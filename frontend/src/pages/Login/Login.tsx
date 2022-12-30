@@ -17,6 +17,10 @@ export function Login(){
                         <label htmlFor="password">password</label>
                         <input name="password" type="password" placeholder='password'/>
                     </div>
+                    <div className='remember-me'>
+                        <input type="checkbox" value={1} className="checkbox"/>
+                        <label>remember me</label>
+                    </div>
                     <button className="btn-login">Login</button>
                 </div>
             </div>

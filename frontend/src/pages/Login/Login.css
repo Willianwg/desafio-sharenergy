@@ -55,6 +55,7 @@ body * {
     color: #11b69a;
     font-weight: 800;
     margin: 0;
+    margin-bottom: 1rem;
 }
 
 .textfield {
@@ -79,7 +80,7 @@ body * {
 } 
 
 ::-ms-reveal {
-    filter: invert(100%);
+    filter: invert(70%);
   }
 
 .textfield>input::placeholder {
@@ -87,8 +88,21 @@ body * {
 }
 
 .textfield>label {
-    color: #f0ffffde;
+    color: #11b69a;
+    font-weight: 650;
     margin-bottom: 10px;
+}
+
+.remember-me {
+    color: black;
+    display: flex;
+    align-items: center;
+    align-self: flex-start;
+    padding-block: 1rem;
+}
+
+.checkbox {
+    margin-right: 5px;
 }
 
 .btn-login {
