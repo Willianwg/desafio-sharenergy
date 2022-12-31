@@ -40,7 +40,6 @@
 }
 
 .back-btn {
-    color: rgb(49, 53, 53);
     background: transparent;
     font-size: 14pt;
     font-weight: 700;
@@ -50,6 +49,17 @@
     align-items: center;
     cursor: pointer;
     z-index: 1;
+}
+
+.dog-page a {
+    color: rgb(49, 53, 53);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.dog-page a:hover {
+    color: #11b69a;
 }
 
 .arrow {

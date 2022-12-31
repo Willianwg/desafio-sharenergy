@@ -27,22 +27,26 @@
 
 .cat-card > img {
     width: 40vw;
-    max-height: 25rem;
+}
+
+.cat-page a {
+    color: rgb(49, 53, 53);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
 }
 
 .back-btn {
-    color: rgb(49, 53, 53);
     background: transparent;
-    font-size: 14pt;
-    font-weight: 700;
     padding: 0.5rem;
     border: none;
     display: flex;
+    justify-content: center;
     align-items: center;
     cursor: pointer;
 }
 
 .arrow {
-    font-size: 20pt;
-    margin-right: 0.5rem;
+    margin-right: 5rem;
 }

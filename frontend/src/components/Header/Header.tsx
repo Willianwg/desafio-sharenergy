@@ -7,8 +7,8 @@ export function Header() {
                 <h1>Sharenergy</h1>
             </div>
             <div className="links">
-                <a href="#" >HttpCat</a>
-                <a href="#" >RandomDog</a>
+                <a href="/httpcat" >HttpCat</a>
+                <a href="/random-dog" >RandomDog</a>
                 <a href="#" >Clients</a>
             </div>
         </div>

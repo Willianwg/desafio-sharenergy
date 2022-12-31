@@ -11,7 +11,7 @@ type UserProps = {
 export function User(props: UserProps){
     return (
         <div className="user-container">
-            <img src={ props.picture } />
+            <img src={ props.picture } className="user-image" />
             <div className="content">
                 <p className="name">{ props.name }</p>
                 <p className="username">@{ props.username }</p>

@@ -34,7 +34,9 @@ export function RandomDog() {
     return (
         <div className="dog-page">
             <div className="back-container">
-                <button className="back-btn"><span className="arrow">{"<"}</span> BACK</button>
+                <button className="back-btn">
+                    <a href="/"><span className="arrow">{"<"}</span> BACK</a>
+                </button>
             </div>
             {dog && loadPage()}
         </div>

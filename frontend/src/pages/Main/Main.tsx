@@ -44,7 +44,7 @@ export function Main() {
         e.preventDefault();
         
         setPage(page + 1);
-        loadUsers(page + 1);
+        loadUsers(page + 1, true);
     }
 
     function handleBack(e: React.MouseEvent<HTMLButtonElement>){
@@ -53,14 +53,15 @@ export function Main() {
         if(page < 2) return;
 
         setPage(page - 1);
-        loadUsers(page - 1);
+        loadUsers(page - 1, true);
     }
 
-    async function loadUsers(pageNumber: number) {
+    async function loadUsers(pageNumber: number, scroll?: boolean) {
         const response = await (await fetch(`https://randomuser.me/api/?inc=picture,name,email,login,dob,?page=${pageNumber}&results=15&seed=${pageNumber + 100}`)).json();
 
         setUsers(response.results);
-        window.scrollTo(0,100);
+        
+        if(scroll) window.scrollTo(0,100);
     }
 
     function handleSearch(text: string){

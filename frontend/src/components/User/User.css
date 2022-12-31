@@ -5,7 +5,7 @@
     align-items: center;
 }
 
-img {
+.user-image {
     object-fit: contain;
     width: auto;
     border-radius: 50%;
