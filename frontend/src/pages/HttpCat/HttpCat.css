@@ -27,6 +27,7 @@
 
 .cat-card > img {
     width: 40vw;
+    max-height: 25rem;
 }
 
 .back-btn {

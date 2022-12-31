@@ -63,6 +63,10 @@ export function Main() {
         window.scrollTo(0,100);
     }
 
+    function handleSearch(text: string){
+        console.log(text);
+    }
+
     useEffect(() => {
         loadUsers(page);
     }, [page]);
@@ -70,7 +74,7 @@ export function Main() {
     return (
         <div className="main-page">
             <Header />
-            <SearchBar />
+            <SearchBar placeholder="Search by name, email or username" callback={ handleSearch }/>
             <div className="users-list">
                 {
                     users.map((user, key) => {

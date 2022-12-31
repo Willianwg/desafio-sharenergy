@@ -6,6 +6,10 @@ import "./HttpCat.css";
 export function HttpCat() {
     const [code, setCode] = useState(102);
 
+    function handleSubmit(text: number) {
+        setCode(text);
+    }
+
     return (
         <div className="cat-page">
             <div className="back-container">
@@ -14,7 +18,7 @@ export function HttpCat() {
             <div className="cat-card">
                 <h1>HttpCat</h1>
                 <img src={`https://http.cat/${code}`} />
-                <SearchBar />
+                <SearchBar placeholder="Type a http code here" callback={handleSubmit} />
             </div>
             <Footer />
         </div>
