@@ -6,6 +6,8 @@ type ClientProps = {
     address: string;
 }
 
+export type UpdateClientProps = Partial<ClientProps>;
+
 export class Client {
     private _id: string;
     private props: ClientProps;
@@ -13,6 +15,13 @@ export class Client {
     constructor(props: ClientProps, id: string){
         this._id = id;
         this.props = props;
+    }
+
+    public update(props: UpdateClientProps){
+        this.props = {
+            ...this.props,
+            ...props
+        }
     }
 
     public get name(){

@@ -3,7 +3,14 @@ import { ClientRepository } from "src/application/repositories/clientRepository"
 
 
 export class inMemoryClientRepository implements ClientRepository {
+    
     public clients: Client[] = [];
+
+    async updateClient(client: Client): Promise<void> {
+        const clientIndex = this.clients.findIndex(item => item.id === client.id);
+
+        this.clients[clientIndex] = client;
+    }
 
     async deleteClientById(clientId: string): Promise<void> {
         const filteredClients = this.clients.filter(client => client.id !== clientId);
