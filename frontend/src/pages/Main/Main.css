@@ -3,6 +3,8 @@
 }
 .users-list {
     display: grid;
+    align-items: center;
+    justify-content: center;
     grid-template-columns: 30fr 30fr 30fr;
     grid-template-rows: 1fr 1fr 1fr;
     grid-gap: 1rem;
