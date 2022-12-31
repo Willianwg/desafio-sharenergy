@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Footer } from "../../components/Footer/Footer";
 import "./RandomDog.css";
+import RefreshImage from "./RefreshImage.svg";
 
 export function RandomDog() {
     const [dog, setDog] = useState("");
 
     async function loadDogs() {
-        if (dog) return;
         const response = await (await fetch(`https://random.dog/woof?filter=mp4,webm`)).text();
 
         setDog(response);
@@ -16,7 +16,10 @@ export function RandomDog() {
         return (
             <>
                 <div className="dog-card">
-                    <h1>RandomDog</h1>
+                    <div className="card-top">
+                        <h1>RandomDog</h1>
+                        <button className="refresh-btn" onClick={loadDogs}><img src={RefreshImage} /></button>
+                    </div>
                     <img src={`https://random.dog/${dog}`} />
                 </div>
                 <Footer />
