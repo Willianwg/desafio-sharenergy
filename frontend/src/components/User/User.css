@@ -1,0 +1,28 @@
+.user-container {
+    background: white;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+img {
+    object-fit: contain;
+    width: auto;
+    border-radius: 50%;
+}
+
+.content {
+    height: 100%;
+    padding: 1rem;
+}
+
+.name {
+    color:#11b69a;
+    font-weight: 600;
+    font-size: larger;
+    margin-bottom: 0.5rem;
+}
+
+p {
+   line-height: 1.5rem;
+}

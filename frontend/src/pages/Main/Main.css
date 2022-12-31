@@ -1,0 +1,10 @@
+.main-page {
+    width: 100vw;
+}
+.users-list {
+    display: grid;
+    grid-template-columns: 30fr 30fr 30fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+    scale: 0.9;
+}
