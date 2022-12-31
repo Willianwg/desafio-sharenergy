@@ -1,0 +1,50 @@
+.dog-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.dog-card > h1 {
+    color:#11b69a;
+    margin-bottom: 1rem;
+}
+
+.back-container {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+ }
+
+.dog-card {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    scale: 1.5;
+}
+
+.dog-card > img {
+    object-fit: cover;
+    width: 35vw;
+    max-height: 20rem;
+}
+
+.back-btn {
+    color: rgb(49, 53, 53);
+    background: transparent;
+    font-size: 14pt;
+    font-weight: 700;
+    padding: 0.5rem;
+    border: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.arrow {
+    font-size: 20pt;
+    margin-right: 0.5rem;
+}
