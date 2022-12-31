@@ -29,7 +29,7 @@
     width: 40vw;
 }
 
-.cat-page a {
+.back-container a  {
     color: rgb(49, 53, 53);
     text-decoration: none;
     display: flex;

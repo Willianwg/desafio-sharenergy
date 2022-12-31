@@ -51,7 +51,7 @@
     z-index: 1;
 }
 
-.dog-page a {
+.back-container a {
     color: rgb(49, 53, 53);
     text-decoration: none;
     display: flex;
