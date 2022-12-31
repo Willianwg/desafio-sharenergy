@@ -3,7 +3,7 @@ import { UserNotFound } from "../errors/userNotFound";
 import { CreateClient } from "./createClient";
 import { UpdateClient } from "./updateClient";
 
-describe("Create Client", () => {
+describe("Update Client", () => {
     it("should be able to Update a Client", async () => {
         const clientRepository = new inMemoryClientRepository();
         const createClient = new CreateClient(clientRepository);
