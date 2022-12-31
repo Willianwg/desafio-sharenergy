@@ -1,11 +1,11 @@
-import { Client } from "../entities/Client";
-import { ClientRepository } from "../repositories/clientRepository";
+import { Client } from "../../entities/Client";
+import { ClientRepository } from "../../repositories/clientRepository";
 import { randomUUID } from "node:crypto";
 
 type CreateClientRequest ={
     name: string;
     email: string;
-    number: string;
+    phone: string;
     document: string;
     address: string;
 }

@@ -1,8 +1,8 @@
-import { inMemoryUserRepository } from "../../../test/repositories/inMemory/userRepository";
-import { CreateUser } from "./createUser"
+import { inMemoryUserRepository } from "../../../../test/repositories/inMemory/userRepository";
+import { CreateUser } from "../User/createUser"
 import { Login } from "./login";
-import { UserNotFound } from "./errors/userNotFound";
-import { InvalidPassword } from "./errors/InvalidPassword";
+import { UserNotFound } from "../errors/userNotFound";
+import { InvalidPassword } from "../errors/InvalidPassword";
 
 describe("Login", () => {
     it("should be able to login", async () => {

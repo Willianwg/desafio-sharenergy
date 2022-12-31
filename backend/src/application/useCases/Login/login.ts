@@ -1,8 +1,8 @@
-import { User } from "../entities/User";
-import { PasswordAuth } from "../helpers/passwordAuth";
-import { UserRepository } from "../repositories/userRepository";
-import { InvalidPassword } from "./errors/InvalidPassword";
-import { UserNotFound } from "./errors/userNotFound";
+import { User } from "../../entities/User";
+import { PasswordAuth } from "../../helpers/passwordAuth";
+import { UserRepository } from "../../repositories/userRepository";
+import { InvalidPassword } from "../errors/InvalidPassword";
+import { UserNotFound } from "../errors/userNotFound";
 
 type LoginRequest = {
     username: string;

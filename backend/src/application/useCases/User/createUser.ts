@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
-import { User } from "../entities/User";
-import { UserRepository } from "../repositories/userRepository";
+import { User } from "../../entities/User";
+import { UserRepository } from "../../repositories/userRepository";
 import * as bcrypt from "bcryptjs";
 
 type CreateUserRequest ={

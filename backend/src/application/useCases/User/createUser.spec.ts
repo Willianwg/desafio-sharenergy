@@ -1,6 +1,6 @@
-import { inMemoryUserRepository } from "../../../test/repositories/inMemory/userRepository";
+import { inMemoryUserRepository } from "../../../../test/repositories/inMemory/userRepository";
 import { CreateUser } from "./createUser"
-import { PasswordAuth } from "../helpers/passwordAuth";
+import { PasswordAuth } from "../../helpers/passwordAuth";
 
 describe("Create User", ()=>{
     it("should be able to create an user", async ()=>{

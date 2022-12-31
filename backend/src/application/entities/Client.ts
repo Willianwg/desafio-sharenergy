@@ -1,7 +1,7 @@
 type ClientProps = {
     name: string;
     email: string;
-    number: string;
+    phone: string;
     document: string;
     address: string;
 }
@@ -11,7 +11,6 @@ export class Client {
     private props: ClientProps;
 
     constructor(props: ClientProps, id: string){
-
         this._id = id;
         this.props = props;
     }
@@ -23,8 +22,8 @@ export class Client {
         return this.props.email;
     }
 
-    public get number(){
-        return this.props.number;
+    public get phone(){
+        return this.props.phone;
     }
 
     public get document(){
