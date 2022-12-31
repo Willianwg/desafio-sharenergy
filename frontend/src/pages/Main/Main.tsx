@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Footer } from "../../components/Footer/Footer";
 import { Header } from "../../components/Header/Header";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
 import { User } from "../../components/User/User";
@@ -59,6 +60,7 @@ export function Main() {
         const response = await (await fetch(`https://randomuser.me/api/?inc=picture,name,email,login,dob,?page=${pageNumber}&results=15&seed=${pageNumber + 100}`)).json();
 
         setUsers(response.results);
+        window.scrollTo(0,100);
     }
 
     useEffect(() => {
@@ -89,6 +91,7 @@ export function Main() {
                 }
                 <button className="list-button" onClick={handleNext}>Next</button>
             </div>
+            <Footer />
         </div>
     )
 }
