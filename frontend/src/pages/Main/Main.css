@@ -1,6 +1,7 @@
 .main-page {
     width: 100vw;
 }
+
 .users-list {
     display: grid;
     align-items: center;
@@ -9,4 +10,24 @@
     grid-template-rows: 1fr 1fr 1fr;
     grid-gap: 1rem;
     scale: 0.9;
+}
+
+.list-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.list-button {
+    background: #11b69a;
+    padding: 1rem;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.list-button:nth-child(2) {
+   margin-left: 5rem;
 }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "../../components/Header/Header";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
 import { User } from "../../components/User/User";
@@ -37,16 +37,33 @@ type UserProps = {
 
 export function Main() {
     const [users, setUsers] = useState<UserProps[]>([]);
+    const [page, setPage] = useState(1);
+
+    function handleNext(e: React.MouseEvent<HTMLButtonElement>){
+        e.preventDefault();
+        
+        setPage(page + 1);
+        loadUsers(page + 1);
+    }
+
+    function handleBack(e: React.MouseEvent<HTMLButtonElement>){
+        e.preventDefault();
+        
+        if(page < 2) return;
+
+        setPage(page - 1);
+        loadUsers(page - 1);
+    }
+
+    async function loadUsers(pageNumber: number) {
+        const response = await (await fetch(`https://randomuser.me/api/?inc=picture,name,email,login,dob,?page=${pageNumber}&results=15&seed=${pageNumber + 100}`)).json();
+
+        setUsers(response.results);
+    }
 
     useEffect(() => {
-        async function loadUsers() {
-            const response = await (await fetch("https://randomuser.me/api/?inc=picture,name,email,login,dob,?page=3&results=15&seed=abc")).json();
-
-            setUsers(response.results);
-        }
-
-        loadUsers();
-    }, []);
+        loadUsers(page);
+    }, [page]);
 
     return (
         <div className="main-page">
@@ -65,6 +82,12 @@ export function Main() {
                         />
                     })
                 }
+            </div>
+            <div className="list-buttons">
+                {
+                    page > 1 && <button className="list-button" onClick={handleBack}>Back</button>
+                }
+                <button className="list-button" onClick={handleNext}>Next</button>
             </div>
         </div>
     )
