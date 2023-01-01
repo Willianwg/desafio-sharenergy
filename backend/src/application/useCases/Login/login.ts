@@ -1,3 +1,4 @@
+import { Injectable } from "@nestjs/common";
 import { User } from "../../entities/User";
 import { PasswordAuth } from "../../helpers/passwordAuth";
 import { UserRepository } from "../../repositories/userRepository";
@@ -13,6 +14,7 @@ type LoginResponse = {
     user: User;
 }
 
+@Injectable()
 export class Login {
     constructor( private userRepository: UserRepository){}
 

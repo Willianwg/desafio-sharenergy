@@ -1,3 +1,4 @@
+import { Injectable } from "@nestjs/common";
 import { ClientRepository } from "../../repositories/clientRepository";
 import { UserNotFound } from "../errors/userNotFound";
 
@@ -10,6 +11,7 @@ type UpdateClientRequest ={
     address?: string;
 }
 
+@Injectable()
 export class UpdateClient {
     constructor(private clientRepository: ClientRepository){}
 

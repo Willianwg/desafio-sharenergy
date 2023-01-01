@@ -1,3 +1,4 @@
+import { Injectable } from "@nestjs/common";
 import { ClientRepository } from "../../repositories/clientRepository";
 import { UserNotFound } from "../errors/userNotFound";
 
@@ -5,6 +6,7 @@ type DeleteClientRequest ={
    clientId: string;
 }
 
+@Injectable()
 export class DeleteClient {
     constructor(private clientRepository: ClientRepository){}
 

@@ -2,6 +2,7 @@ import { randomUUID } from "node:crypto";
 import { User } from "../../entities/User";
 import { UserRepository } from "../../repositories/userRepository";
 import * as bcrypt from "bcryptjs";
+import { Injectable } from "@nestjs/common";
 
 type CreateUserRequest ={
     username: string;
@@ -12,6 +13,7 @@ type CreateUserResponse ={
     user: User;
 }
 
+@Injectable()
 export class CreateUser {
     constructor(private userRepository: UserRepository){}
 
