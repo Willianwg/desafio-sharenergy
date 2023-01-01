@@ -3,7 +3,7 @@ import { Login } from 'src/application/useCases/Login/login';
 import { CreateUser } from 'src/application/useCases/User/createUser';
 
 @Controller("user")
-export class AppController {
+export class UserController {
     constructor(
         private readonly createUser: CreateUser,
         private readonly login: Login,

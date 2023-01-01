@@ -6,7 +6,7 @@ import { CreateClientDTO } from '../dtos/Client/createClientDTO';
 import { UpdateClientDTO } from '../dtos/Client/updateClientDTO';
 
 @Controller("client")
-export class AppController {
+export class ClientController {
     constructor(
         private readonly createClient: CreateClient,
         private readonly updateClient: UpdateClient,

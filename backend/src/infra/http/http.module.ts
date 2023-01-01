@@ -5,15 +5,18 @@ import { UpdateClient } from "src/application/useCases/Client/updateClient";
 import { Login } from "src/application/useCases/Login/login";
 import { CreateUser } from "src/application/useCases/User/createUser";
 import { DatabaseModule } from "../database/database.module";
+import { ClientController } from "./controllers/client.controller";
+import { UserController } from "./controllers/user.controller";
 
 @Module({
-    imports:[DatabaseModule],
-    providers:[
-        CreateUser,
-        Login,
+    imports: [DatabaseModule],
+    controllers: [ClientController, UserController],
+    providers: [
         CreateClient,
-        DeleteClient,
         UpdateClient,
-    ]
+        DeleteClient,
+        CreateUser,
+        Login
+    ],
 })
-export class HttpModule {}
+export class HttpModule { }
