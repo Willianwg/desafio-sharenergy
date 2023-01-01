@@ -22,12 +22,16 @@ export class PrismaClientRepository implements ClientRepository {
         })
     }
 
-    async findClientById(clientId: string): Promise<Client> {
+    async findClientById(clientId: string): Promise<Client | null> {
         const client = await this.prismaService.client.findFirst({
             where:{
                 id: clientId
             }
         })
+
+        if (!client) {
+            return null;
+        }
 
         return PrismaClientMapper.toDomain(client);
     }
