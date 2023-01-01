@@ -1,10 +1,11 @@
 .dog-page {
     display: flex;
     flex-direction: column;
+    width: 100vw;
 }
 
-.dog-card  h1 {
-    color:#11b69a;
+.dog-card h1 {
+    color: #11b69a;
     margin-bottom: 1rem;
 }
 
@@ -15,15 +16,23 @@
     position: absolute;
     top: 0;
     left: 0;
- }
+}
 
-.dog-card {
+.dog-container {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    scale: 1.5;
+}
+
+.dog-card {
+    height: 80%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .card-top {
@@ -33,10 +42,10 @@
     position: relative;
 }
 
-.dog-card > img {
+.dog-card>img {
     object-fit: cover;
-    width: 35vw;
-    max-height: 20rem;
+    width: 60%;
+    max-height: 25rem;
 }
 
 .back-btn {
@@ -69,13 +78,13 @@
 
 .refresh-btn {
     color: white;
-    padding:1rem;
+    padding: 1rem;
     height: 2rem;
     width: 3rem;
     background: #11b69a;
     position: absolute;
     top: 12px;
-    right:-5rem;
+    right: -5rem;
     border-radius: 2rem;
     border: none;
     display: flex;
@@ -84,12 +93,12 @@
     cursor: pointer;
 }
 
-.refresh-btn > img {
-    width: 12px;
-    height: 12px;
+.refresh-btn>img {
+    width: 1rem;
+    height: 1rem;
 }
 
-.refresh-btn:active > img {
+.refresh-btn:active>img {
     width: 10px;
     height: 10px;
 }
