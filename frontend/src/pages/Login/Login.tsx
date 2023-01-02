@@ -1,27 +1,56 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { useApi } from '../../services/api';
 import './Login.css'
 
 export function Login() {
+    const navigate = useNavigate();
+    const api = useApi();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [remeber, setRemember] = useState(false);
+    const [remember, setRemember] = useState(false);
 
     async function login(e: React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
 
-        const response = await (await fetch("http://localhost:3000/user/login", {
-            method: "POST",
-            body: JSON.stringify({
-                username,
-                password,
-            }),
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-            },
-        })).json();
+        const { access_token } = await api.login(username, password);
 
-        console.log(response);
+        if (!access_token){
+            return alert("Email or password invalid.");
+        };
+
+        if (remember) {
+            setToken(access_token);
+        }
+        navigate("/");
     }
+
+    async function authenticate() {
+        const token = localStorage.getItem("access_token");
+        if (!token) return;
+
+        const { user } = await api.authenticate(token);
+
+        if(!user) return;
+        
+        navigate("/");
+    }
+
+    function setToken(token: string) {
+        localStorage.setItem("access_token", token);
+    }
+
+    function handleCheckboxChange() {
+        if (!remember) {
+            return setRemember(true);
+        }
+
+        setRemember(false);
+    }
+
+    useEffect(() => {
+        authenticate();
+    }, [])
 
     return (
         <div className="main-login">
@@ -40,7 +69,7 @@ export function Login() {
                         <input value={password} onChange={e => setPassword(e.target.value)} name="password" type="password" placeholder='password' />
                     </div>
                     <div className='remember-me'>
-                        <input type="checkbox" value={1} className="checkbox" />
+                        <input type="checkbox" className="checkbox" onChange={handleCheckboxChange} />
                         <label>remember me</label>
                     </div>
                     <button className="btn-login" onClick={login}>Login</button>
