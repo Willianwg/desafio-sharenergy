@@ -1,7 +1,7 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
-import { Login } from 'src/application/useCases/Login/login';
+import { Body, Controller, Get, Post, UseGuards, Request } from '@nestjs/common';
 import { CreateUser } from 'src/application/useCases/User/createUser';
 import { AuthService } from 'src/auth/auth.service';
+import { JwtAuthGuard } from 'src/auth/jwtAuth.guard';
 import { CreateUserDTO } from '../dtos/User/createUserDTO';
 import { LoginDTO } from '../dtos/User/loginDTO';
 
@@ -20,11 +20,19 @@ export class UserController {
     @Post("login")
     async loginUser(@Body() loginData: LoginDTO) {
         const { username, password } = loginData;
-        const { access_token } = await this.authentication.login( username, password );
+        const { access_token } = await this.authentication.login(username, password);
 
         return {
             access_token
         };
+    }
+
+    @UseGuards(JwtAuthGuard)
+    @Get("auth")
+    async authenticate(@Request() request : { user: { username: string, id: string }}) {
+        return {
+            user: request.user,
+        }
     }
 
 }

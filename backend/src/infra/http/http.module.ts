@@ -10,6 +10,7 @@ import { ClientController } from "./controllers/client.controller";
 import { UserController } from "./controllers/user.controller";
 import { JwtModule } from "@nestjs/jwt";
 import { jwtConstants } from "src/auth/constants";
+import { JwtStrategy } from "src/auth/jwt.strategy";
 
 @Module({
     imports: [DatabaseModule, JwtModule.register({
@@ -26,6 +27,7 @@ import { jwtConstants } from "src/auth/constants";
         CreateUser,
         Login,
         AuthService,
+        JwtStrategy
     ],
 })
 export class HttpModule { }
