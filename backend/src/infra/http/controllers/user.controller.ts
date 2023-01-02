@@ -21,7 +21,12 @@ export class UserController {
         const { username, password } = loginData;
         const { user } = await this.login.execute({ username, password });
 
-        return user;
+        return {
+            user: {
+                id: user.id,
+                username: user.username
+            }
+        };
     }
 
 }
