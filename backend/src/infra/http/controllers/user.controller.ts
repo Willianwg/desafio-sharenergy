@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { Login } from 'src/application/useCases/Login/login';
 import { CreateUser } from 'src/application/useCases/User/createUser';
+import { AuthService } from 'src/auth/auth.service';
 import { CreateUserDTO } from '../dtos/User/createUserDTO';
 import { LoginDTO } from '../dtos/User/loginDTO';
 
@@ -8,7 +9,7 @@ import { LoginDTO } from '../dtos/User/loginDTO';
 export class UserController {
     constructor(
         private readonly createUser: CreateUser,
-        private readonly login: Login,
+        private readonly authentication: AuthService,
     ) { }
 
     @Post()
@@ -19,13 +20,10 @@ export class UserController {
     @Post("login")
     async loginUser(@Body() loginData: LoginDTO) {
         const { username, password } = loginData;
-        const { user } = await this.login.execute({ username, password });
+        const { access_token } = await this.authentication.login( username, password );
 
         return {
-            user: {
-                id: user.id,
-                username: user.username
-            }
+            access_token
         };
     }
 
