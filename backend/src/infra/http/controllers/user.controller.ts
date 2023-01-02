@@ -16,7 +16,7 @@ export class UserController {
         await this.createUser.execute(user);
     }
 
-    @Get("login")
+    @Post("login")
     async loginUser(@Body() loginData: LoginDTO) {
         const { username, password } = loginData;
         const { user } = await this.login.execute({ username, password });
