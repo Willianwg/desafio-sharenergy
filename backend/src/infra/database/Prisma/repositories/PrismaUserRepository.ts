@@ -1,8 +1,10 @@
+import { Injectable } from "@nestjs/common/decorators";
 import { User } from "src/application/entities/User";
 import { UserRepository } from "src/application/repositories/userRepository";
 import { PrismaUserMapper } from "../mappers/PrismaUserMapper";
 import { PrismaService } from "../prisma.service";
 
+@Injectable()
 export class PrismaUserRepository implements UserRepository {
     constructor(private prismaService: PrismaService) { }
 
