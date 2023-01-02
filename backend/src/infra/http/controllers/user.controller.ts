@@ -1,4 +1,6 @@
-import { Body, Controller, Get, Post, UseGuards, Request } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards, Request, NotFoundException, UnauthorizedException } from '@nestjs/common';
+import { InvalidPassword } from 'src/application/useCases/errors/InvalidPassword';
+import { UserNotFound } from 'src/application/useCases/errors/userNotFound';
 import { CreateUser } from 'src/application/useCases/User/createUser';
 import { AuthService } from 'src/auth/auth.service';
 import { JwtAuthGuard } from 'src/auth/jwtAuth.guard';
@@ -19,17 +21,25 @@ export class UserController {
 
     @Post("login")
     async loginUser(@Body() loginData: LoginDTO) {
-        const { username, password } = loginData;
-        const { access_token } = await this.authentication.login(username, password);
+        try {
+            const { username, password } = loginData;
+            const { access_token } = await this.authentication.login(username, password);
 
-        return {
-            access_token
-        };
+            return {
+                access_token
+            };
+        } catch (err: any) {
+            if (err.message === new UserNotFound().message) {
+                throw new NotFoundException();
+            } else if (err.message === new InvalidPassword().message) {
+                throw new UnauthorizedException();
+            }
+        }
     }
 
     @UseGuards(JwtAuthGuard)
     @Get("auth")
-    async authenticate(@Request() request : { user: { username: string, id: string }}) {
+    async authenticate(@Request() request: { user: { username: string, id: string } }) {
         return {
             user: request.user,
         }
