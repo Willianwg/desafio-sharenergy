@@ -1,0 +1,50 @@
+.client-container {
+    background: white;
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: 20fr 20fr;
+    grid-template-rows: 20fr 20fr 20fr;
+    gap: 2rem;
+    position: absolute;
+}
+
+.client-item-content {
+    position: relative;
+    width: 100%;
+    background: rebeccapurple;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.client-item-label {
+    font-weight: 700;
+    color: #11b69a;
+}
+
+.client-item-textarea {
+  
+}
+
+.modal-close {
+    border: none;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.transparent {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #22232398;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}

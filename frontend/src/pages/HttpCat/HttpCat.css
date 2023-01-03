@@ -29,6 +29,10 @@
     width: 40vw;
 }
 
+.cat-page a:hover {
+    color: #11b69a;
+}
+
 .back-container a  {
     color: rgb(49, 53, 53);
     text-decoration: none;

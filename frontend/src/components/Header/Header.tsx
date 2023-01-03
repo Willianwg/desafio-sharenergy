@@ -9,7 +9,7 @@ export function Header() {
             <div className="links">
                 <a href="/httpcat" >HttpCat</a>
                 <a href="/random-dog" >RandomDog</a>
-                <a href="#" >Clients</a>
+                <a href="/clients" >Clients</a>
             </div>
         </div>
     )
