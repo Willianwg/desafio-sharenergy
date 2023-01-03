@@ -6,6 +6,10 @@ export class inMemoryClientRepository implements ClientRepository {
     
     public clients: Client[] = [];
 
+    async findAllClients(): Promise<Client[]> {
+        return this.clients;
+    }
+
     async updateClient(client: Client): Promise<void> {
         const clientIndex = this.clients.findIndex(item => item.id === client.id);
 
