@@ -8,6 +8,10 @@ import { PrismaService } from "../prisma.service";
 export class PrismaClientRepository implements ClientRepository {
     constructor(private prismaService: PrismaService) { }
 
+    async findAllClients(): Promise<Client[]> {
+        const clients = await this.prismaService.client.findMany();
+        return clients.map(PrismaClientMapper.toDomain);
+    }
     async create(client: Client): Promise<void> {
         const mappedClient = PrismaClientMapper.toPrisma(client);
 
@@ -40,10 +44,13 @@ export class PrismaClientRepository implements ClientRepository {
 
     async updateClient(client: Client): Promise<void> {
         const mappedClient = PrismaClientMapper.toPrisma(client);
+        const { id } = mappedClient;
+
+        delete mappedClient.id;
 
         await this.prismaService.client.update({
             where:{
-                id: mappedClient.id,
+                id,
             },
             data: mappedClient
         });

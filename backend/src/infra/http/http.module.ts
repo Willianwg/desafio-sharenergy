@@ -11,6 +11,8 @@ import { UserController } from "./controllers/user.controller";
 import { JwtModule } from "@nestjs/jwt";
 import { jwtConstants } from "src/auth/constants";
 import { JwtStrategy } from "src/auth/jwt.strategy";
+import { GetAllClients } from "src/application/useCases/Client/getAllClients";
+import { GetClientDetails } from "src/application/useCases/Client/getClientDetails";
 
 @Module({
     imports: [DatabaseModule, JwtModule.register({
@@ -21,6 +23,8 @@ import { JwtStrategy } from "src/auth/jwt.strategy";
     })],
     controllers: [ClientController, UserController],
     providers: [
+        GetAllClients,
+        GetClientDetails,
         CreateClient,
         UpdateClient,
         DeleteClient,
