@@ -1,24 +1,21 @@
 import { inMemoryUserRepository } from "../../../../test/repositories/inMemory/userRepository";
-import { CreateUser } from "../User/createUser"
 import { Login } from "./login";
 import { UserNotFound } from "../errors/userNotFound";
 import { InvalidPassword } from "../errors/InvalidPassword";
 import { User } from "../../entities/User";
 import { PasswordAuth } from "../../helpers/passwordAuth";
+import { makeUser } from "../../../../test/factories/UserFactory";
 
 describe("Login", () => {
     it("should be able to login", async () => {
         const userRepository = new inMemoryUserRepository();
-        const createUser = new CreateUser(userRepository);
         const login = new Login(userRepository);
 
-        const realPassword = "sh@r3n3rgy";
-        const encryptedPassword = await PasswordAuth.encrypt(realPassword);
-
-        const newUser = new User({
+        const newUser = await makeUser({
             username: "desafiosharenergy",
-            password: encryptedPassword,
-        }, "test-id");
+            password: "sh@r3n3rgy",
+            id: "test-id",
+        });
 
         await userRepository.create(newUser);
 
@@ -32,13 +29,15 @@ describe("Login", () => {
 
     it("should not be able to login using wrong username", async () => {
         const userRepository = new inMemoryUserRepository();
-        const createUser = new CreateUser(userRepository);
         const login = new Login(userRepository);
 
-        await createUser.execute({
+        const newUser = await makeUser({
             username: "desafiosharenergy",
             password: "sh@r3n3rgy",
-        })
+            id: "test-id",
+        });
+
+        await userRepository.create(newUser);
 
 
         expect(() => {
@@ -52,13 +51,15 @@ describe("Login", () => {
 
     it("should not be able to login using wrong password", async () => {
         const userRepository = new inMemoryUserRepository();
-        const createUser = new CreateUser(userRepository);
         const login = new Login(userRepository);
 
-        await createUser.execute({
+        const newUser = await makeUser({
             username: "desafiosharenergy",
             password: "sh@r3n3rgy",
-        })
+            id: "test-id",
+        });
+
+        await userRepository.create(newUser);
 
         expect(() => {
             return login.execute({
