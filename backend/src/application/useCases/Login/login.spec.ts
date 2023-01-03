@@ -3,6 +3,8 @@ import { CreateUser } from "../User/createUser"
 import { Login } from "./login";
 import { UserNotFound } from "../errors/userNotFound";
 import { InvalidPassword } from "../errors/InvalidPassword";
+import { User } from "../../entities/User";
+import { PasswordAuth } from "../../helpers/passwordAuth";
 
 describe("Login", () => {
     it("should be able to login", async () => {
@@ -10,10 +12,15 @@ describe("Login", () => {
         const createUser = new CreateUser(userRepository);
         const login = new Login(userRepository);
 
-        await createUser.execute({
+        const realPassword = "sh@r3n3rgy";
+        const encryptedPassword = await PasswordAuth.encrypt(realPassword);
+
+        const newUser = new User({
             username: "desafiosharenergy",
-            password: "sh@r3n3rgy",
-        })
+            password: encryptedPassword,
+        }, "test-id");
+
+        await userRepository.create(newUser);
 
         const { user } = await login.execute({
             username: "desafiosharenergy",
@@ -60,5 +67,5 @@ describe("Login", () => {
             })
         }).rejects.toThrow(InvalidPassword);
     })
-    
+
 })

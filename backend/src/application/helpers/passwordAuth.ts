@@ -6,4 +6,10 @@ export class PasswordAuth {
         
         return isValid;
     }
+
+    static async encrypt(password: string){
+        const encrypted = await bcrypt.hash(password, 10);
+
+        return encrypted;
+    }
 }

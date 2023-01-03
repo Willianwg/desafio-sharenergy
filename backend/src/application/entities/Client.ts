@@ -1,4 +1,4 @@
-type ClientProps = {
+export type ClientProps = {
     name: string;
     email: string;
     phone: string;

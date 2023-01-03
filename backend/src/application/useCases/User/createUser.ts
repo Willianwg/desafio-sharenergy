@@ -1,8 +1,8 @@
 import { randomUUID } from "node:crypto";
 import { User } from "../../entities/User";
 import { UserRepository } from "../../repositories/userRepository";
-import * as bcrypt from "bcryptjs";
 import { Injectable } from "@nestjs/common";
+import { PasswordAuth } from "../../helpers/passwordAuth";
 
 type CreateUserRequest ={
     username: string;
@@ -20,7 +20,7 @@ export class CreateUser {
     async execute(request: CreateUserRequest): Promise<CreateUserResponse> {
 
         const id = randomUUID();
-        const encryptedPassword = await bcrypt.hash(request.password, 10);
+        const encryptedPassword = await PasswordAuth.encrypt(request.password);
         const user = new User({
             username: request.username,
             password: encryptedPassword,

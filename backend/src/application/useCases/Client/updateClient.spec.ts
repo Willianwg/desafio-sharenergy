@@ -1,21 +1,15 @@
+import { makeClient } from "../../../../test/factories/ClientFactory";
 import { inMemoryClientRepository } from "../../../../test/repositories/inMemory/clientRepository";
 import { UserNotFound } from "../errors/userNotFound";
-import { CreateClient } from "./createClient";
 import { UpdateClient } from "./updateClient";
 
 describe("Update Client", () => {
     it("should be able to Update a Client", async () => {
         const clientRepository = new inMemoryClientRepository();
-        const createClient = new CreateClient(clientRepository);
         const updateClient = new UpdateClient(clientRepository);
 
-        const { client } = await createClient.execute({
-            name: "example name",
-            email: "example@email.com",
-            document: "123456",
-            phone: "(11) 4002-8922",
-            address: "Av. do Contorno, 2905, Santa Efigênia, Belo Horizonte – MG"
-        })
+        const client = makeClient("test-id");
+        await clientRepository.create(client);
 
         await updateClient.execute({
             clientId: client.id,
@@ -33,16 +27,10 @@ describe("Update Client", () => {
 
     it("should not be able to update a Client", async () => {
         const clientRepository = new inMemoryClientRepository();
-        const createClient = new CreateClient(clientRepository);
         const updateClient = new UpdateClient(clientRepository);
 
-        await createClient.execute({
-            name: "example name",
-            email: "example@email.com",
-            document: "123456",
-            phone: "(11) 4002-8922",
-            address: "Av. do Contorno, 2905, Santa Efigênia, Belo Horizonte – MG"
-        })
+        const client = makeClient("test-id");
+        await clientRepository.create(client);
 
         expect(() => updateClient.execute({ clientId: "wrong-id", email: "random@example.com" })).rejects.toThrow(UserNotFound);
         expect(clientRepository.clients[0].email).toEqual("example@email.com");
