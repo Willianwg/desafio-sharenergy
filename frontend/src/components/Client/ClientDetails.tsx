@@ -1,21 +1,22 @@
 import "./Client.css";
 import { TextArea } from "./Textarea";
 
-type ClientProps = {
+type ClientDetailsProps = {
     name: string;
     email: string;
     phone: string;
     document: string;
     address: string;
     id: string;
+    closeModal(): void;
 }
 
-export function Client(props: ClientProps) {
+export function ClientDetails(props: ClientDetailsProps) {
     return (
         <div className="transparent">
             <div className="client-item-content">
                 <div className="client-container">
-                    <button className="modal-close">X</button>
+                    <button onClick={props.closeModal} className="modal-close">X</button>
                     <TextArea label="name" value={props.name} />
                     <TextArea label="email" value={props.email} />
                     <TextArea label="phone" value={props.phone} />
