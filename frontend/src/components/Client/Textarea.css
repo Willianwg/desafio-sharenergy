@@ -2,3 +2,7 @@
     font-weight: 700;
     color: #11b69a;
 }
+
+.client-item-textarea {
+    width: 20rem;
+}
