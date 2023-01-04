@@ -48,29 +48,6 @@
     max-height: 25rem;
 }
 
-.back-btn {
-    background: transparent;
-    font-size: 14pt;
-    font-weight: 700;
-    padding: 0.5rem;
-    border: none;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    z-index: 1;
-}
-
-.back-container a {
-    color: rgb(49, 53, 53);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-}
-
-.dog-page a:hover {
-    color: #11b69a;
-}
-
 .arrow {
     font-size: 20pt;
     margin-right: 0.5rem;

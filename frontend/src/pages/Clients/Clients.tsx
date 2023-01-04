@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BackButton } from "../../components/BackButton/BackButton";
 import { ClientDetails } from "../../components/Client/ClientDetails";
 import { TextArea } from "../../components/Client/Textarea";
 import "./Clients.css";
@@ -33,7 +34,7 @@ export function Clients() {
     function openModal() {
         if (!selectedClient) return;
         return (
-                <ClientDetails name={selectedClient.name} email={selectedClient.email} phone={selectedClient.phone} address={selectedClient.address} id={selectedClient.id} document={selectedClient.document} closeModal={closeModal} />
+            <ClientDetails name={selectedClient.name} email={selectedClient.email} phone={selectedClient.phone} address={selectedClient.address} id={selectedClient.id} document={selectedClient.document} closeModal={closeModal} />
         )
     }
 
@@ -43,10 +44,10 @@ export function Clients() {
 
     function clientItem(clientProps: ClientProps, key: number) {
         return (
-            <div className="item-container" key={ key }>
-                <TextArea label="name" value= { clientProps.name } />
-                <TextArea label="id" value={ clientProps.id } />
-                <button onClick={() => setSelectedClient(clientProps) }>details</button>
+            <div className="item-container" key={key}>
+                <TextArea label="name" value={clientProps.name} />
+                <TextArea label="id" value={clientProps.id} />
+                <button onClick={() => setSelectedClient(clientProps)}>details</button>
             </div>
         )
     }
@@ -57,14 +58,10 @@ export function Clients() {
 
     return (
         <div className="client-page">
-            <div className="back-container">
-                <button className="back-btn">
-                    <a href="/"><span className="arrow">{"<"}</span> BACK</a>
-                </button>
-            </div>
+            <BackButton />
             <h1>Clients</h1>
             <div className="clients-list">
-                { clients.map((item, index)=> clientItem(item, index)) }
+                {clients.map((item, index) => clientItem(item, index))}
             </div>
             {openModal()}
         </div>

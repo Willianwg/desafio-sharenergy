@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BackButton } from "../../components/BackButton/BackButton";
 import { Footer } from "../../components/Footer/Footer";
 import "./RandomDog.css";
 import RefreshImage from "./RefreshImage.svg";
@@ -35,11 +36,7 @@ export function RandomDog() {
 
     return (
         <div className="dog-page">
-            <div className="back-container">
-                <button className="back-btn">
-                    <a href="/"><span className="arrow">{"<"}</span> BACK</a>
-                </button>
-            </div>
+            <BackButton />
             {dog && loadPage()}
         </div>
     )

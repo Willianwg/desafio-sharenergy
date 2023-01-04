@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BackButton } from "../../components/BackButton/BackButton";
 import { Footer } from "../../components/Footer/Footer";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
 import "./HttpCat.css";
@@ -12,9 +13,7 @@ export function HttpCat() {
 
     return (
         <div className="cat-page">
-            <div className="back-container">
-                <button className="back-btn"><a  href="/"><span className="arrow">{"<"}</span> BACK</a></button>
-            </div>
+           <BackButton />
             <div className="cat-card">
                 <h1>HttpCat</h1>
                 <img src={`https://http.cat/${code}`} />
