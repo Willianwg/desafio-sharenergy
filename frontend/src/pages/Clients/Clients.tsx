@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { BackButton } from "../../components/BackButton/BackButton";
 import { ClientDetails } from "../../components/Client/ClientDetails";
 import { TextArea } from "../../components/Client/Textarea";
+import { useApi } from "../../services/api";
 import "./Clients.css";
 
 type ClientProps = {
@@ -14,22 +15,15 @@ type ClientProps = {
 }
 
 export function Clients() {
-    const [modalOpen, setModal] = useState(true);
-    const [clients, setClients] = useState<ClientProps[]>([{
-        name: "willian guedes",
-        email: "guedes@exmple.com",
-        phone: "1140028922",
-        document: "000.000.000-00",
-        address: "Example street - Ex",
-        id: "DFASDF123-SDFASDF",
-    }]);
+    const api = useApi();
+    const [clients, setClients] = useState<ClientProps[]>([]);
     const [selectedClient, setSelectedClient] = useState<ClientProps | null>(null);
 
-    /*  async function loadClients() {
-          const response = await (await fetch(`https://random.dog/woof?filter=mp4,webm`)).json();
-  
-          setClients(response);
-      } */
+    async function loadClients() {
+        const { clients } = await api.getClients();
+
+        setClients(clients);
+    }
 
     function openModal() {
         if (!selectedClient) return;
@@ -53,7 +47,7 @@ export function Clients() {
     }
 
     useEffect(() => {
-
+        loadClients();
     }, []);
 
     return (

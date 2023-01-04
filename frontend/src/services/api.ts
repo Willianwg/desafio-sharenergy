@@ -1,4 +1,5 @@
 import { requestAuth } from "./requests/auth";
+import { requestGetClients } from "./requests/getClients";
 import { requestLogin } from "./requests/login";
 
 type LoginResponse = {
@@ -36,6 +37,13 @@ export const useApi = () => ({
 
         return {
             user,
+        }
+    },
+
+    async getClients() {
+        const { clients } = await requestGetClients({ baseUrl: this.baseUrl });
+        return {
+            clients,
         }
     }
 })
