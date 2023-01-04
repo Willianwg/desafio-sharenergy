@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { BackButton } from "../../components/BackButton/BackButton";
+import { CreateClient } from "../../components/Create";
 import { Modal } from "../../components/Modal/Modal";
 import { TextArea } from "../../components/Modal/Textarea";
 import { useApi } from "../../services/api";
@@ -18,6 +19,7 @@ export function Clients() {
     const api = useApi();
     const [clients, setClients] = useState<ClientProps[]>([]);
     const [selectedClient, setSelectedClient] = useState<ClientProps | null>(null);
+    const [newClient, setNew] = useState(false);
 
     async function loadClients() {
         const { clients } = await api.getClients();
@@ -62,9 +64,10 @@ export function Clients() {
                 {clients.map((item, index) => clientItem(item, index))}
             </div>
             <div className="new-client-btn-container">
-                <button className="btn">+ new</button>
+                <button className="btn" onClick={()=> setNew(true)}>+ new</button>
             </div>
             {openModal()}
+            { newClient && <CreateClient />}
         </div>
     )
 }
