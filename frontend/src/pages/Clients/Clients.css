@@ -11,8 +11,6 @@
     width:70%;
     height: 80%;
     overflow-x: auto;
-    display: grid;
-    row-gap: 1rem;
     padding-block: 0.5rem;
 }
 
@@ -23,6 +21,7 @@
     background: white;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 0.5rem;
 }
 
 .client-page > h1 {
