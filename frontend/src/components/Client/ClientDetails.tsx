@@ -14,8 +14,8 @@ type ClientDetailsProps = {
 export function ClientDetails(props: ClientDetailsProps) {
     return (
         <div className="transparent">
-            <div className="client-item-content">
-                <div className="client-container">
+            <div className="client-container">
+                <div className="client-data">
                     <button onClick={props.closeModal} className="modal-close">X</button>
                     <TextArea label="name" value={props.name} />
                     <TextArea label="email" value={props.email} />
@@ -23,7 +23,12 @@ export function ClientDetails(props: ClientDetailsProps) {
                     <TextArea label="cpf" value={props.document} />
                     <TextArea label="address" value={props.address} />
                     <TextArea label="id" value={props.id} />
+                   
                 </div>
+                <div className="modal-buttons">
+                        <button className="modal-btn">Edit</button>
+                        <button className="modal-btn delete-btn">Delete</button>
+                    </div>
             </div>
         </div>
     )

@@ -1,4 +1,4 @@
-
+import "./Textarea.css";
 
 export function TextArea(props: { label: string, value: string }) {
     return (

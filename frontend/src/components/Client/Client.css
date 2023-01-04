@@ -1,29 +1,15 @@
-.client-container {
-    background: white;
+.client-data {
     padding: 3rem;
     display: grid;
     grid-template-columns: 20fr 20fr;
     grid-template-rows: 20fr 20fr 20fr;
     gap: 2rem;
+   
+}
+
+.client-container {
+    background: white;
     position: absolute;
-}
-
-.client-item-content {
-    position: relative;
-    width: 100%;
-    background: rebeccapurple;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.client-item-label {
-    font-weight: 700;
-    color: #11b69a;
-}
-
-.client-item-textarea {
-  
 }
 
 .modal-close {
@@ -47,4 +33,32 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+}
+
+.modal-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1rem 2rem;
+}
+
+.modal-btn {
+    background: #11b69a;
+    padding: 1rem;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    letter-spacing: 2px;
+    margin-left: 1rem;
+    width: 5rem;
+}
+
+.delete-btn {
+    background: white;
+    color:#11b69a;
+    font-weight: 700;
+    border: 2px solid #11b69a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
