@@ -92,9 +92,9 @@ export function Main() {
             </div>
             <div className="list-buttons">
                 {
-                    page > 1 && <button className="list-button" onClick={handleBack}>Back</button>
+                    page > 1 && <button className="btn" onClick={handleBack}>Back</button>
                 }
-                <button className="list-button" onClick={handleNext}>Next</button>
+                <button className="btn" onClick={handleNext}>Next</button>
             </div>
             <Footer />
         </div>

@@ -37,7 +37,7 @@ export function SearchBar(props: SearchBarProps) {
                 onKeyDown={handleKeyDown}
             />
 
-            <button className="btn" onClick={handleSubmit}>
+            <button className="search-btn" onClick={handleSubmit}>
                 <img src={loupe} alt="loupe" className="bar-image" />
             </button>
         </div>

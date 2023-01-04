@@ -20,3 +20,12 @@ body {
 button {
   cursor: pointer;
 }
+
+.btn {
+  background: #11b69a;
+  padding: 1rem;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  letter-spacing: 2px;
+}

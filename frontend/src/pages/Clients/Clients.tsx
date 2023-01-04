@@ -45,7 +45,7 @@ export function Clients() {
             <div className="item-container" key={key}>
                 <TextArea label="name" value={clientProps.name} />
                 <TextArea label="email" value={clientProps.email} />
-                <button onClick={() => setSelectedClient(clientProps)}>details</button>
+                <button onClick={() => setSelectedClient(clientProps)} >details</button>
             </div>
         )
     }
@@ -60,6 +60,9 @@ export function Clients() {
             <h1>Clients</h1>
             <div className="clients-list">
                 {clients.map((item, index) => clientItem(item, index))}
+            </div>
+            <div className="new-client-btn-container">
+                <button className="btn">+ new</button>
             </div>
             {openModal()}
         </div>

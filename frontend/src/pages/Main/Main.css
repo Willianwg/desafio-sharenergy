@@ -19,15 +19,6 @@
     justify-content: center;
 }
 
-.list-button {
-    background: #11b69a;
-    padding: 1rem;
-    border-radius: 8px;
-    border: none;
-    color: white;
-    letter-spacing: 2px;
-}
-
-.list-button:nth-child(2) {
+.list-buttons .btn:nth-child(2) {
    margin-left: 5rem;
 }
