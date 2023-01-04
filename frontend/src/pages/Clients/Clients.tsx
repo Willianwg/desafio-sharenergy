@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ClientDetails } from "../../components/Client/ClientDetails";
+import { TextArea } from "../../components/Client/Textarea";
 import "./Clients.css";
 
 type ClientProps = {
@@ -13,16 +14,15 @@ type ClientProps = {
 
 export function Clients() {
     const [modalOpen, setModal] = useState(true);
-    const [clients, setClients] = useState<ClientProps[]>([]);
-    
-    const item = {
+    const [clients, setClients] = useState<ClientProps[]>([{
         name: "willian guedes",
         email: "guedes@exmple.com",
         phone: "1140028922",
         document: "000.000.000-00",
         address: "Example street - Ex",
         id: "DFASDF123-SDFASDF",
-    }
+    }]);
+    const [selectedClient, setSelectedClient] = useState<ClientProps | null>(null);
 
     /*  async function loadClients() {
           const response = await (await fetch(`https://random.dog/woof?filter=mp4,webm`)).json();
@@ -31,16 +31,24 @@ export function Clients() {
       } */
 
     function openModal() {
-        if (!modalOpen) return;
+        if (!selectedClient) return;
         return (
-            <div>
-                <ClientDetails name={item.name} email={item.email} phone={item.phone} address={item.address} id={item.id} document={item.document} closeModal={closeModal} />
-            </div>
+                <ClientDetails name={selectedClient.name} email={selectedClient.email} phone={selectedClient.phone} address={selectedClient.address} id={selectedClient.id} document={selectedClient.document} closeModal={closeModal} />
         )
     }
 
     function closeModal() {
-        setModal(false);
+        setSelectedClient(null);
+    }
+
+    function clientItem(clientProps: ClientProps, key: number) {
+        return (
+            <div className="item-container" key={ key }>
+                <TextArea label="name" value= { clientProps.name } />
+                <TextArea label="id" value={ clientProps.id } />
+                <button onClick={() => setSelectedClient(clientProps) }>details</button>
+            </div>
+        )
     }
 
     useEffect(() => {
@@ -48,15 +56,17 @@ export function Clients() {
     }, []);
 
     return (
-        <>
-            <div className="dog-page">
-                <div className="back-container">
-                    <button className="back-btn">
-                        <a href="/"><span className="arrow">{"<"}</span> BACK</a>
-                    </button>
-                </div>
-                {openModal()}
+        <div className="client-page">
+            <div className="back-container">
+                <button className="back-btn">
+                    <a href="/"><span className="arrow">{"<"}</span> BACK</a>
+                </button>
             </div>
-        </>
+            <h1>Clients</h1>
+            <div className="clients-list">
+                { clients.map((item, index)=> clientItem(item, index)) }
+            </div>
+            {openModal()}
+        </div>
     )
 }

@@ -1,0 +1,32 @@
+.client-page {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.clients-list {
+    width:70%;
+    height: 80%;
+    overflow-x: auto;
+    display: grid;
+    row-gap: 1rem;
+    padding-block: 0.5rem;
+}
+
+.item-container {
+    display: flex;
+    height: 6rem;
+    padding: 1rem;
+    background: white;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.client-page > h1 {
+    color:#11b69a;
+    margin-bottom: 2rem;
+}
+
