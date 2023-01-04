@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { BackButton } from "../../components/BackButton/BackButton";
-import { ClientDetails } from "../../components/Client/ClientDetails";
-import { TextArea } from "../../components/Client/Textarea";
+import { Modal } from "../../components/Modal/Modal";
+import { TextArea } from "../../components/Modal/Textarea";
 import { useApi } from "../../services/api";
 import "./Clients.css";
 
@@ -28,12 +28,16 @@ export function Clients() {
     function openModal() {
         if (!selectedClient) return;
         return (
-            <ClientDetails name={selectedClient.name} email={selectedClient.email} phone={selectedClient.phone} address={selectedClient.address} id={selectedClient.id} document={selectedClient.document} closeModal={closeModal} />
+            <Modal name={selectedClient.name} email={selectedClient.email} phone={selectedClient.phone} address={selectedClient.address} id={selectedClient.id} document={selectedClient.document} closeModal={closeModal} />
         )
     }
 
-    function closeModal() {
+    function closeModal(refresh?: boolean) {
         setSelectedClient(null);
+
+        if(refresh){
+            loadClients();
+        }
     }
 
     function clientItem(clientProps: ClientProps, key: number) {

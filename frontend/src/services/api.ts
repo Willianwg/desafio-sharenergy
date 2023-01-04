@@ -1,4 +1,5 @@
 import { requestAuth } from "./requests/auth";
+import { requestDeleteClient } from "./requests/deleteClient";
 import { requestGetClients } from "./requests/getClients";
 import { requestLogin } from "./requests/login";
 
@@ -45,5 +46,12 @@ export const useApi = () => ({
         return {
             clients,
         }
+    },
+
+    async deleteClient(clientId: string){
+        await requestDeleteClient({
+            baseUrl: this.baseUrl,
+            clientId
+        });
     }
 })
