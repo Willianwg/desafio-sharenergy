@@ -1,10 +1,12 @@
+import { requestAuth } from "./requests/auth";
+import { requestLogin } from "./requests/login";
 
 type LoginResponse = {
     access_token: string;
 }
 
 type AuthenticationResponse = {
-    user:{
+    user: {
         username: string;
         id: string;
     }
@@ -13,35 +15,27 @@ type AuthenticationResponse = {
 
 export const useApi = () => ({
     baseUrl: "http://localhost:3000",
-    jsonContentType: {
-        'Content-Type': 'application/json;charset=utf-8'
-    },
 
     async login(username: string, password: string): Promise<LoginResponse> {
-        const response : LoginResponse = await (await fetch(this.baseUrl + "/user/login", {
-            method: "POST",
-            body: JSON.stringify({
-                username,
-                password,
-            }),
-            headers: this.jsonContentType
-        })).json();
+        const { access_token } = await requestLogin({
+            username,
+            password,
+            baseUrl: this.baseUrl
+        })
 
         return {
-            access_token: response.access_token,
+            access_token,
         }
     },
 
     async authenticate(access_token: string): Promise<AuthenticationResponse> {
-        const response : AuthenticationResponse = await (await fetch(this.baseUrl + "/user/auth", {
-            headers:{
-                ...this.jsonContentType,
-                "Authorization": `Bearer ${access_token}`
-            }
-        })).json();
+        const { user } = await requestAuth({
+            access_token,
+            baseUrl: this.baseUrl,
+        });
 
         return {
-           user: response.user
+            user,
         }
     }
 })
