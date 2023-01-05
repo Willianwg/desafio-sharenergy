@@ -29,8 +29,8 @@ export function ClientData({ props, callback }: ClientDataProps) {
 
             </div>
             <div className="modal-buttons">
-                <button className="modal-btn">Edit</button>
                 <button className="modal-btn delete-btn" onClick={() => callback(true)}>Delete</button>
+                <button className="modal-btn">Edit</button>
             </div>
         </>
     )

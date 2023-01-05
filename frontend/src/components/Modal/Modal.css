@@ -17,6 +17,7 @@
     position: absolute;
     top: 1rem;
     right: 1rem;
+    font-size: 18px;
 }
 
 .transparent {
@@ -60,7 +61,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 1rem;
 }
 
 .delete-client {
@@ -71,7 +71,12 @@
     justify-content: space-between;
 }
 
-.delete {
+.modal-buttons .delete-btn {
+    margin-right: 1rem;
+}
+
+
+.buttons-separate {
     padding: 0;
     justify-content: space-between;
     width: 100%;

@@ -10,6 +10,7 @@
 .create-input {
     padding: 0.5rem;
     outline: none;
+    margin-top: 0.5rem;
 }
 
 .create-grid {

@@ -22,8 +22,8 @@ export function DeleteClient({ deleteOption, clientId, closeModal }: DeleteClien
         <div className="delete-client">
             <p>Are you sure about this?</p>
             <div className="modal-buttons delete">
-                <button className="modal-btn" onClick={ deleteClient }>Yes</button>
                 <button className="modal-btn delete-btn" onClick={() => deleteOption(false)}>Cancel</button>
+                <button className="modal-btn" onClick={ deleteClient }>Yes</button>
             </div>
         </div>
     )

@@ -27,15 +27,23 @@ export function Clients() {
         setClients(clients);
     }
 
-    function openModal() {
+    function openDetailsModal() {
         if (!selectedClient) return;
         return (
-            <Modal name={selectedClient.name} email={selectedClient.email} phone={selectedClient.phone} address={selectedClient.address} id={selectedClient.id} document={selectedClient.document} closeModal={closeModal} />
+            <Modal name={selectedClient.name} email={selectedClient.email} phone={selectedClient.phone} address={selectedClient.address} id={selectedClient.id} document={selectedClient.document} closeModal={closeDetailsModal} />
         )
     }
 
-    function closeModal(refresh?: boolean) {
+    function closeDetailsModal(refresh?: boolean) {
         setSelectedClient(null);
+
+        if(refresh){
+            loadClients();
+        }
+    }
+
+    function closeCreateModal(refresh?: boolean) {
+        setNew(false);
 
         if(refresh){
             loadClients();
@@ -66,8 +74,8 @@ export function Clients() {
             <div className="new-client-btn-container">
                 <button className="btn" onClick={()=> setNew(true)}>+ new</button>
             </div>
-            {openModal()}
-            { newClient && <CreateClient />}
+            {openDetailsModal()}
+            { newClient && <CreateClient closeModal={closeCreateModal}/>}
         </div>
     )
 }
