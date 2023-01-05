@@ -12,7 +12,7 @@ export function CreateClient(props: { closeModal(refresh?: boolean): void }) {
 
     async function handleSave(e: React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
-        if (!name || !email || !phone || !document || !document) {
+        if (!name || !email || !phone || !document || !address) {
             return alert("You can't let empty fields.");
         }
 
@@ -23,7 +23,11 @@ export function CreateClient(props: { closeModal(refresh?: boolean): void }) {
             document,
             address
         }
-        await api.createClient(newClient);
+        const response = await api.createClient(newClient);
+
+        if(response.status !== 201){
+            alert("Error");
+        }
 
         props.closeModal(true);
     }

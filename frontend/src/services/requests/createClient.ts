@@ -6,11 +6,13 @@ type ClientProps = {
     address: string;
 }
 export async function requestCreateClient({ baseUrl, newClient }: { baseUrl: string, newClient: ClientProps }) {
-    await fetch(baseUrl + "/clients/create", {
+   const response =  await fetch(baseUrl + "/clients/create", {
         method: "POST",
         body: JSON.stringify(newClient),
         headers: {
             'Content-Type': 'application/json;charset=utf-8',
         }
     });
+
+    return response;
 }

@@ -58,10 +58,12 @@ export const useApi = () => ({
     },
 
     async createClient(newClient: ClientProps){
-        await requestCreateClient({
+       const response = await requestCreateClient({
             baseUrl: this.baseUrl,
             newClient
         });
+
+        return response;
     },
 
     async deleteClient(clientId: string){
