@@ -1,6 +1,7 @@
 import { requestAuth } from "./requests/auth";
 import { requestCreateClient } from "./requests/createClient";
 import { requestDeleteClient } from "./requests/deleteClient";
+import { requestEditClient } from "./requests/editClient";
 import { requestGetClients } from "./requests/getClients";
 import { requestLogin } from "./requests/login";
 
@@ -65,6 +66,16 @@ export const useApi = () => ({
 
         return response;
     },
+
+    async editClient(newClient: ClientProps, clientId: string){
+        const response = await requestEditClient({
+             baseUrl: this.baseUrl,
+             clientId,
+             newClient
+         });
+ 
+         return response;
+     },
 
     async deleteClient(clientId: string){
         await requestDeleteClient({

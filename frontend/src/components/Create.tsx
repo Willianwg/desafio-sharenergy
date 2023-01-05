@@ -4,15 +4,6 @@ import "./Create.css";
 import { Modal } from "./Modal/Modal";
 
 
-function InputArea({ label, setValue }: { label: string, setValue(value: string): void }) {
-    return (
-        <div className="create-inputs">
-            <label className="client-item-label">{label}:</label>
-            <input className="create-input" onChange={e => setValue(e.target.value)} />
-        </div>
-    )
-}
-
 export function CreateClient(props: { closeModal(refresh?: boolean): void }) {
     const api = useApi();
     const [name, setName] = useState("");
@@ -27,13 +18,8 @@ export function CreateClient(props: { closeModal(refresh?: boolean): void }) {
             return alert("You can't let empty fields.");
         }
 
-        const newClient = {
-            name,
-            email,
-            phone,
-            document,
-            address
-        }
+        const newClient = { name, email, phone, document, address };
+
         const response = await api.createClient(newClient);
 
         if (response.status !== 201) {
@@ -59,5 +45,15 @@ export function CreateClient(props: { closeModal(refresh?: boolean): void }) {
                 </div>
             </div>
         </Modal>
+    )
+}
+
+
+function InputArea({ label, setValue }: { label: string, setValue(value: string): void }) {
+    return (
+        <div className="create-inputs">
+            <label className="client-item-label">{label}:</label>
+            <input className="create-input" onChange={e => setValue(e.target.value)} />
+        </div>
     )
 }

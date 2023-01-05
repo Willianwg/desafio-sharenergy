@@ -12,10 +12,11 @@ type ClientDetailsProps = {
 
 type ClientDataProps = {
     props: ClientDetailsProps;
-    callback(bool: boolean): void;
+    deleteOption(bool: boolean): void;
+    editOption(bool: boolean): void;
 }
 
-export function ClientData({ props, callback }: ClientDataProps) {
+export function ClientData({ props, deleteOption, editOption }: ClientDataProps) {
     return (
         <>
             <div className="client-data">
@@ -29,8 +30,8 @@ export function ClientData({ props, callback }: ClientDataProps) {
 
             </div>
             <div className="modal-buttons">
-                <button className="modal-btn delete-btn" onClick={() => callback(true)}>Delete</button>
-                <button className="modal-btn">Edit</button>
+                <button className="modal-btn delete-btn" onClick={() => deleteOption(true)}>Delete</button>
+                <button className="modal-btn"  onClick={() => editOption(true)}>Edit</button>
             </div>
         </>
     )
