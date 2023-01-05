@@ -24,7 +24,9 @@ export function Clients() {
     async function loadClients() {
         const { clients } = await api.getClients();
 
-        setClients(clients);
+        const NewestFirst = clients.reverse();
+
+        setClients(NewestFirst);
     }
 
     function openDetailsModal() {

@@ -1,4 +1,5 @@
 import { requestAuth } from "./requests/auth";
+import { requestCreateClient } from "./requests/createClient";
 import { requestDeleteClient } from "./requests/deleteClient";
 import { requestGetClients } from "./requests/getClients";
 import { requestLogin } from "./requests/login";
@@ -12,6 +13,14 @@ type AuthenticationResponse = {
         username: string;
         id: string;
     }
+}
+
+export type ClientProps = {
+    name: string;
+    email: string;
+    phone: string;
+    document: string;
+    address: string;
 }
 
 
@@ -46,6 +55,13 @@ export const useApi = () => ({
         return {
             clients,
         }
+    },
+
+    async createClient(newClient: ClientProps){
+        await requestCreateClient({
+            baseUrl: this.baseUrl,
+            newClient
+        });
     },
 
     async deleteClient(clientId: string){
