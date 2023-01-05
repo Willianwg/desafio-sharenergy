@@ -1,6 +1,17 @@
 import React, { useState } from "react";
 import { useApi } from "../services/api";
 import "./Create.css";
+import { Modal } from "./Modal/Modal";
+
+
+function InputArea({ label, setValue }: { label: string, setValue(value: string): void }) {
+    return (
+        <div className="create-inputs">
+            <label className="client-item-label">{label}:</label>
+            <input className="create-input" onChange={e => setValue(e.target.value)} />
+        </div>
+    )
+}
 
 export function CreateClient(props: { closeModal(refresh?: boolean): void }) {
     const api = useApi();
@@ -25,7 +36,7 @@ export function CreateClient(props: { closeModal(refresh?: boolean): void }) {
         }
         const response = await api.createClient(newClient);
 
-        if(response.status !== 201){
+        if (response.status !== 201) {
             alert("Error");
         }
 
@@ -33,31 +44,20 @@ export function CreateClient(props: { closeModal(refresh?: boolean): void }) {
     }
 
     return (
-        <div className="transparent">
-            <div className="client-container">
-                <div className="create-container">
-                    <div className="create-grid">
-                        <InputArea label="name" setValue={setName} />
-                        <InputArea label="email" setValue={setEmail} />
-                        <InputArea label="phone" setValue={setPhone} />
-                        <InputArea label="cpf" setValue={setDocument} />
-                        <InputArea label="address" setValue={setAddress} />
-                    </div>
-                    <div className="modal-buttons buttons-separate">
-                        <button className="modal-btn delete-btn" onClick={() => props.closeModal()}>Cancel</button>
-                        <button className="modal-btn" onClick={handleSave} >Save</button>
-                    </div>
+        <Modal >
+            <div className="create-container">
+                <div className="create-grid">
+                    <InputArea label="name" setValue={setName} />
+                    <InputArea label="email" setValue={setEmail} />
+                    <InputArea label="phone" setValue={setPhone} />
+                    <InputArea label="cpf" setValue={setDocument} />
+                    <InputArea label="address" setValue={setAddress} />
+                </div>
+                <div className="modal-buttons buttons-separate">
+                    <button className="modal-btn delete-btn" onClick={() => props.closeModal()}>Cancel</button>
+                    <button className="modal-btn" onClick={handleSave} >Save</button>
                 </div>
             </div>
-        </div>
-    )
-}
-
-function InputArea({ label, setValue }: { label: string, setValue(value: string): void }) {
-    return (
-        <div className="create-inputs">
-            <label className="client-item-label">{label}:</label>
-            <input className="create-input" onChange={e => setValue(e.target.value)} />
-        </div>
+        </Modal>
     )
 }

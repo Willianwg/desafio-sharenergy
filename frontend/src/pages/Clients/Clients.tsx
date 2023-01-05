@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { BackButton } from "../../components/BackButton/BackButton";
 import { CreateClient } from "../../components/Create";
-import { Modal } from "../../components/Modal/Modal";
+import { ClientDetails } from "../../components/Modal/ClientDetails";
 import { TextArea } from "../../components/Modal/Textarea";
 import { useApi } from "../../services/api";
 import "./Clients.css";
@@ -32,14 +32,14 @@ export function Clients() {
     function openDetailsModal() {
         if (!selectedClient) return;
         return (
-            <Modal name={selectedClient.name} email={selectedClient.email} phone={selectedClient.phone} address={selectedClient.address} id={selectedClient.id} document={selectedClient.document} closeModal={closeDetailsModal} />
+            <ClientDetails name={selectedClient.name} email={selectedClient.email} phone={selectedClient.phone} address={selectedClient.address} id={selectedClient.id} document={selectedClient.document} closeModal={closeDetailsModal} />
         )
     }
 
     function closeDetailsModal(refresh?: boolean) {
         setSelectedClient(null);
 
-        if(refresh){
+        if (refresh) {
             loadClients();
         }
     }
@@ -47,7 +47,7 @@ export function Clients() {
     function closeCreateModal(refresh?: boolean) {
         setNew(false);
 
-        if(refresh){
+        if (refresh) {
             loadClients();
         }
     }
@@ -74,10 +74,10 @@ export function Clients() {
                 {clients.map((item, index) => clientItem(item, index))}
             </div>
             <div className="new-client-btn-container">
-                <button className="btn" onClick={()=> setNew(true)}>+ new</button>
+                <button className="btn" onClick={() => setNew(true)}>+ new</button>
             </div>
             {openDetailsModal()}
-            { newClient && <CreateClient closeModal={closeCreateModal}/>}
+            {newClient && <CreateClient closeModal={closeCreateModal} />}
         </div>
     )
 }
