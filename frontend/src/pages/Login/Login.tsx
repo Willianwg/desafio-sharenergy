@@ -27,6 +27,23 @@ export function Login() {
         }
     }, [context])
 
+
+    function handleLogin(e: React.MouseEvent<HTMLButtonElement>){
+        if(!username || !password){
+            return alert("Enter an username and password");
+        }
+
+        if(username.length < 5){
+            return alert("Username must have more than 4 characters");
+        }
+
+        if(password.length < 5){
+            return alert("Password must have more than 4 characters");
+        }
+
+        context.login(username, password, remember)
+    }
+
     return (
         <div className="main-login">
             <div className="left-login">
@@ -47,7 +64,7 @@ export function Login() {
                         <input type="checkbox" className="checkbox" onChange={handleCheckboxChange} />
                         <label>remember me</label>
                     </div>
-                    <button className="btn-login" onClick={()=> context.login(username, password, remember)}>Login</button>
+                    <button className="btn-login" onClick={handleLogin}>Login</button>
                 </div>
             </div>
         </div>
