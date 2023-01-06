@@ -1,5 +1,8 @@
 .main-page {
     width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .users-list {
@@ -10,7 +13,8 @@
     grid-template-columns: 30fr 30fr 30fr;
     grid-template-rows: 1fr 1fr 1fr;
     grid-gap: 1rem;
-    scale: 0.9;
+    width: 90%;
+    margin-block: 2rem;
 }
 
 .list-buttons {
@@ -21,4 +25,36 @@
 
 .list-buttons .btn:nth-child(2) {
    margin-left: 5rem;
+}
+
+
+@media only screen and (max-width:950px){
+    .users-list {
+        grid-template-columns: 1fr 1fr;
+        
+    }
+
+    .content p {
+        font-size: 1.9vw;
+    }
+
+    .content .email {
+       font-size: 1.5vw;
+    }
+}
+
+@media only screen and (max-width:650px){
+    .users-list {
+        grid-template-columns: 1fr;
+        width: 90%;
+       
+    }
+    
+    .content p {
+        font-size: 3.8vw;
+    }
+
+    .content .email {
+        font-size: 3.5vw;
+     }
 }

@@ -47,3 +47,12 @@ footer a {
 footer a:hover {
     color: white;
 }
+
+
+@media only screen and (max-width:650px){
+  
+  footer h3 {
+    font-size: 7vw;
+    line-height: 25vw;
+  }
+}
