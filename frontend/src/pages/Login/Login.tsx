@@ -1,44 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Auth/AuthContext';
 import { useApi } from '../../services/api';
 import './Login.css'
 
 export function Login() {
     const navigate = useNavigate();
     const api = useApi();
+    const context = useContext(AuthContext);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [remember, setRemember] = useState(false);
-
-    async function login(e: React.MouseEvent<HTMLButtonElement>) {
-        e.preventDefault();
-
-        const { access_token } = await api.login(username, password);
-
-        if (!access_token){
-            return alert("Email or password invalid.");
-        };
-
-        if (remember) {
-            setToken(access_token);
-        }
-        navigate("/");
-    }
-
-    async function authenticate() {
-        const token = localStorage.getItem("access_token");
-        if (!token) return;
-
-        const { user } = await api.authenticate(token);
-
-        if(!user) return;
-        
-        navigate("/");
-    }
-
-    function setToken(token: string) {
-        localStorage.setItem("access_token", token);
-    }
 
     function handleCheckboxChange() {
         if (!remember) {
@@ -49,13 +21,16 @@ export function Login() {
     }
 
     useEffect(() => {
-        authenticate();
-    }, [])
+        if (context.user) {
+            console.log(context.user)
+            navigate("/home");
+        }
+    }, [context])
 
     return (
         <div className="main-login">
             <div className="left-login">
-                <h1>Economize com a Energia Solar!</h1>
+                <h1>Economize com a Energia Solar! {context.user?.username}</h1>
             </div>
             <div className="right-login">
                 <div className="card-login">
@@ -72,7 +47,7 @@ export function Login() {
                         <input type="checkbox" className="checkbox" onChange={handleCheckboxChange} />
                         <label>remember me</label>
                     </div>
-                    <button className="btn-login" onClick={login}>Login</button>
+                    <button className="btn-login" onClick={()=> context.login(username, password, remember)}>Login</button>
                 </div>
             </div>
         </div>

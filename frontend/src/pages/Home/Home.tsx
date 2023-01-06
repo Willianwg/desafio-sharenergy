@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../Auth/AuthContext";
 import { Footer } from "../../components/Footer/Footer";
 import { Header } from "../../components/Header/Header";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
 import { User } from "../../components/User/User";
 
-import "./Main.css";
+import "./Home.css";
 
 type UserProps = {
     name: {
@@ -36,7 +37,7 @@ type UserProps = {
     };
 }
 
-export function Main() {
+export function Home() {
     const [users, setUsers] = useState<UserProps[]>([]);
     const [page, setPage] = useState(1);
 

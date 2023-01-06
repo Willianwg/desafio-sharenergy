@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Header.css";
 
 export function Header() {
@@ -7,9 +8,9 @@ export function Header() {
                 <h1>Sharenergy</h1>
             </div>
             <div className="links">
-                <a href="/httpcat" >HttpCat</a>
-                <a href="/random-dog" >RandomDog</a>
-                <a href="/clients" >Clients</a>
+                <Link to="/httpcat" >HttpCat</Link>
+                <Link to="/random-dog" >RandomDog</Link>
+                <Link to="/clients" >Clients</Link>
             </div>
         </div>
     )
