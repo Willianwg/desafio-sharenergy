@@ -55,7 +55,7 @@
 
 .delete-btn {
     background: white;
-    color:#11b69a;
+    color: #11b69a;
     font-weight: 700;
     border: 2px solid #11b69a;
     display: flex;
@@ -82,4 +82,25 @@
     justify-content: space-between;
     width: 100%;
     margin-top: 1rem;
+}
+
+
+@media only screen and (max-width:800px) {
+    .client-data {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    .client-container .client-data {
+        display: inline-block;
+     }
+}
+
+
+
+@media only screen and (max-width:600px) {
+    .client-container .container {
+        transform: scale(0.85);
+        transform-origin: center;
+    }
 }

@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { useApi } from "../services/api";
 import "./Create.css";
 import { InputArea } from "./Inputarea";
-import { Modal } from "./Modal/Modal";
-
 
 type ClientDetailsProps = {
     name: string;
@@ -44,7 +42,6 @@ export function EditClient(props: ClientDetailsProps) {
     }
 
     return (
-        <Modal >
             <div className="create-container">
                 <div className="create-grid">
                     <InputArea label="name" setValue={setName} value={name} />
@@ -58,7 +55,6 @@ export function EditClient(props: ClientDetailsProps) {
                     <button className="modal-btn" onClick={handleSave} >Save</button>
                 </div>
             </div>
-        </Modal>
     )
 }
 

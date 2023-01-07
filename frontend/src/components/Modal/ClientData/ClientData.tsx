@@ -18,7 +18,7 @@ type ClientDataProps = {
 
 export function ClientData({ props, deleteOption, editOption }: ClientDataProps) {
     return (
-        <>
+        <div className="container">
             <div className="client-data">
                 <button onClick={props.closeModal} className="modal-close">X</button>
                 <TextArea label="name" value={props.name} />
@@ -33,6 +33,6 @@ export function ClientData({ props, deleteOption, editOption }: ClientDataProps)
                 <button className="modal-btn delete-btn" onClick={() => deleteOption(true)}>Delete</button>
                 <button className="modal-btn"  onClick={() => editOption(true)}>Edit</button>
             </div>
-        </>
+        </div>
     )
 }

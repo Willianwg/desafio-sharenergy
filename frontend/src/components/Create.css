@@ -20,3 +20,19 @@
     gap: 1.5rem;
     margin-bottom: 2rem;
 }
+
+
+@media only screen and (max-width:650px) {
+    .create-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    .create-grid > button {
+        height: 2rem;
+    }
+
+    .create-container {
+        padding-inline: 4rem;
+    }
+}
