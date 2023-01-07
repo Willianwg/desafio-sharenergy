@@ -55,8 +55,10 @@ export function Clients() {
     function clientItem(clientProps: ClientProps, key: number) {
         return (
             <div className="item-container" key={key}>
-                <TextArea label="name" value={clientProps.name} />
-                <TextArea label="email" value={clientProps.email} />
+                <div className="item-data">
+                    <TextArea label="name" value={clientProps.name} />
+                    <TextArea label="phone" value={clientProps.phone} />
+                </div>
                 <button onClick={() => setSelectedClient(clientProps)} className="client-details-btn" >details</button>
             </div>
         )
