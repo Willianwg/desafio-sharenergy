@@ -24,7 +24,7 @@ footer button {
     padding-top: 2rem;
 }
 
-.rights {
+.contact {
     margin-top: 3rem;
     width: 100%;
     padding: 2.5rem;
@@ -33,7 +33,7 @@ footer button {
     justify-content: space-evenly;
 }
 
-.rights span {
+.contact span {
     font-weight: 700;
 }
 
@@ -54,5 +54,9 @@ footer a:hover {
   footer h3 {
     font-size: 7vw;
     line-height: 25vw;
+  }
+
+  .contact {
+    flex-direction: column;
   }
 }

@@ -39,7 +39,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
 }
 
 .dog-card>img {
@@ -53,29 +52,25 @@
     margin-right: 0.5rem;
 }
 
-.refresh-btn {
-    color: white;
-    padding: 1rem;
-    height: 2rem;
-    width: 3rem;
-    background: #11b69a;
-    position: absolute;
-    top: 12px;
-    right: -5rem;
-    border-radius: 2rem;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-
-.refresh-btn>img {
+.dog-card > .btn > img {
     width: 1rem;
     height: 1rem;
+    margin-left: 1rem;
 }
 
-.refresh-btn:active>img {
-    width: 10px;
-    height: 10px;
+.dog-card > .btn:active {
+   scale: 0.9;
+}
+
+.dog-card > .btn{
+   margin-top: 1.5rem;
+   display: flex;
+   align-items: center;
+}
+
+
+@media only screen and (max-width:600px) {
+    .dog-card>img {
+       width: 90%;
+    }
 }

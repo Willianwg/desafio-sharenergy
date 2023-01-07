@@ -8,7 +8,7 @@ export function Footer() {
                 <p className='description'> I'd like to know your thoughts about this project. If possible, contact me by my Email, or LinkedIn. Thank you for the opportunity, hope we can work together.</p>
                 <p>Here is my <a href="https://github.com/willianwg">Github.</a></p>
             </div>
-            <div className="rights">
+            <div className="contact">
                 <p>Email: <span>willian.wg70@gmail.com</span></p>
                 <p>LinkedIn: <a href="https://www.linkedin.com/in/willian-guedes?">Willian Guedes</a></p>
             </div>

@@ -27,9 +27,25 @@
 
 .cat-card > img {
     width: 40vw;
+    min-width: 15rem;
     max-height: 25rem;
 }
 
 .arrow {
     margin-right: 5rem;
+}
+
+
+@media only screen and (max-width:950px) {
+    .cat-card > img {
+        width: 60%;
+        margin-bottom: 1rem;
+    }
+}
+
+
+@media only screen and (max-width:600px) {
+    .cat-card > img {
+        width: 90%;
+    }
 }
