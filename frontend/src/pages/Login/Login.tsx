@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Auth/AuthContext';
 import { useApi } from '../../services/api';
+import character from './character.png';
+
 import './Login.css'
 
 export function Login() {
@@ -47,7 +49,8 @@ export function Login() {
     return (
         <div className="main-login">
             <div className="left-login">
-                <h1>Economize com a Energia Solar! {context.user?.username}</h1>
+                <h1>Welcome to Sharenergy!</h1>
+                <div className='image' />
             </div>
             <div className="right-login">
                 <div className="card-login">
