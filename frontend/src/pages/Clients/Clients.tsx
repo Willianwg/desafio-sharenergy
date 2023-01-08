@@ -75,7 +75,7 @@ export function Clients() {
             <div className="clients-list">
                 {clients.map((item, index) => clientItem(item, index))}
             </div>
-            <div className="new-client-btn-container">
+            <div className="new-client-btn-container" style={ clients.length > 0 ? { } : { justifyContent: "center" } }>
                 <button className="btn" onClick={() => setNew(true)}>+ new</button>
             </div>
             {openDetailsModal()}
