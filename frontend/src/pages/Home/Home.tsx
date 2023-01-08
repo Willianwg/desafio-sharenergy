@@ -73,6 +73,7 @@ export function Home() {
 
     function handleSearch(text: string) {
         if (!text) {
+            setPage(1);
             return pagination(1);
         }
 
@@ -96,7 +97,7 @@ export function Home() {
             pagination(1, false, response.results);
 
         }
-        
+
         loadUsers();
     }, []);
 
