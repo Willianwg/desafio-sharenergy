@@ -8,6 +8,7 @@ export function HttpCat() {
     const [code, setCode] = useState(102);
 
     function handleSubmit(text: number) {
+        if(!text) return;
         setCode(text);
     }
 

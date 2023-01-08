@@ -13,7 +13,6 @@ export function SearchBar(props: SearchBarProps) {
     function handleSubmit(e: React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
 
-        if (!search) return;
         props.callback(search);
         setSearch('');
     }

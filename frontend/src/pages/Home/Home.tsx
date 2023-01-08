@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../Auth/AuthContext";
+import React, { useEffect, useState } from "react";
 import { Footer } from "../../components/Footer/Footer";
 import { Header } from "../../components/Header/Header";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
@@ -39,47 +38,75 @@ type UserProps = {
 
 export function Home() {
     const [users, setUsers] = useState<UserProps[]>([]);
+    const [usersPaged, setPagination] = useState<UserProps[]>([]);
     const [page, setPage] = useState(1);
 
-    function handleNext(e: React.MouseEvent<HTMLButtonElement>){
+    function handleNext(e: React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
-        
+
         setPage(page + 1);
-        loadUsers(page + 1, true);
+        pagination(page + 1, true);
     }
 
-    function handleBack(e: React.MouseEvent<HTMLButtonElement>){
+    function handleBack(e: React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
-        
-        if(page < 2) return;
+
+        if (page < 2) return;
 
         setPage(page - 1);
-        loadUsers(page - 1, true);
+        pagination(page - 1, true);
     }
 
-    async function loadUsers(pageNumber: number, scroll?: boolean) {
-        const response = await (await fetch(`https://randomuser.me/api/?inc=picture,name,email,login,dob,?page=${pageNumber}&results=15&seed=${pageNumber + 100}`)).json();
+    function pagination(pageNumber: number, scroll?: boolean, usersArray?: UserProps[]) {
+        const initial = 15 * (pageNumber - 1);
 
-        setUsers(response.results);
-        
-        if(scroll) window.scrollTo(0,100);
+        if (usersArray) {
+            const paged = usersArray.slice(initial, 15 * pageNumber);
+            setPagination(paged);
+        } else {
+            const paged = users.slice(initial, 15 * pageNumber);
+            setPagination(paged);
+        }
+
+        if (scroll) window.scrollTo(0, 100);
     }
 
-    function handleSearch(text: string){
-        console.log(text);
+    function handleSearch(text: string) {
+        if (!text) {
+            return pagination(1);
+        }
+
+        const searchResponse = users.filter(user => {
+            const name = user.name.first + " " + user.name.last;
+            if (name.toLowerCase().includes(text.toLowerCase())) return user;
+
+            if (user.login.username.includes(text)) return user;
+
+            if (user.email.includes(text)) return user;
+        })
+
+        setPagination(searchResponse);
     }
 
     useEffect(() => {
-        loadUsers(page);
-    }, [page]);
+        async function loadUsers() {
+            const response = await (await fetch(`https://randomuser.me/api/?inc=picture,name,email,login,dob&results=120&seed=abc`)).json();
+            setUsers(response.results);
+
+            pagination(1, false, response.results);
+
+        }
+        
+        loadUsers();
+    }, []);
 
     return (
         <div className="main-page">
             <Header />
-            <SearchBar placeholder="Search by name, email or username" callback={ handleSearch }/>
+            <SearchBar placeholder="Search by name, email or username" callback={handleSearch} />
             <div className="users-list">
                 {
-                    users.map((user, key) => {
+                    usersPaged.map((user, key) => {
                         return <User
                             key={key}
                             name={user.name.first + " " + user.name.last}
