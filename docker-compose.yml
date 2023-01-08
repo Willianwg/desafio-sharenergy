@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  backend:
+    build: ./backend
+    environment:
+      - DATABASE_URL=mongodb+srv://sharenergy:sharenergy@cluster0.x73mg.mongodb.net/sharenergy?retryWrites=true&w=majority
+    container_name: backend
+    ports:
+    - 3000:3000
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+    - 5173:5173
