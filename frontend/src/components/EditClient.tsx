@@ -29,6 +29,12 @@ export function EditClient(props: ClientDetailsProps) {
             return alert("You can't let empty fields.");
         }
 
+        const documentValue = Number(document[document.length - 1]);
+        const phoneValue = Number(phone[phone.length - 1]);
+        if (isNaN(documentValue) || isNaN(phoneValue)) {
+            return alert("Enter all fields correctly.");
+        }
+
         const newClient = { name, email, phone, document, address };
 
         const response = await api.editClient(newClient, props.id);
@@ -46,8 +52,8 @@ export function EditClient(props: ClientDetailsProps) {
                 <div className="create-grid">
                     <InputArea label="name" setValue={setName} value={name} />
                     <InputArea label="email" setValue={setEmail} value={email} />
-                    <InputArea label="phone" setValue={setPhone} value={phone} />
-                    <InputArea label="cpf" setValue={setDocument} value={document} />
+                    <InputArea label="phone" setValue={setPhone} value={phone} type="phone" />
+                    <InputArea label="cpf" setValue={setDocument} value={document} type="cpf" />
                     <InputArea label="address" setValue={setAddress} value={address} />
                 </div>
                 <div className="modal-buttons buttons-separate">
