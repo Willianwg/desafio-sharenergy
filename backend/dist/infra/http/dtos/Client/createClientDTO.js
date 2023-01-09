@@ -17,6 +17,7 @@ class CreateClientDTO {
 __decorate([
     (0, decorators_1.ApiProperty)(),
     (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.MinLength)(4),
     __metadata("design:type", String)
 ], CreateClientDTO.prototype, "name", void 0);
 __decorate([
@@ -28,16 +29,19 @@ __decorate([
 __decorate([
     (0, decorators_1.ApiProperty)(),
     (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.MinLength)(10),
     __metadata("design:type", String)
 ], CreateClientDTO.prototype, "phone", void 0);
 __decorate([
     (0, decorators_1.ApiProperty)(),
     (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.MinLength)(11),
     __metadata("design:type", String)
 ], CreateClientDTO.prototype, "document", void 0);
 __decorate([
     (0, decorators_1.ApiProperty)(),
     (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.MinLength)(5),
     __metadata("design:type", String)
 ], CreateClientDTO.prototype, "address", void 0);
 exports.CreateClientDTO = CreateClientDTO;

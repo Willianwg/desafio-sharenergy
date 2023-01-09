@@ -1,9 +1,10 @@
 import { ApiProperty } from "@nestjs/swagger/dist/decorators";
-import { IsEmail, IsNotEmpty } from "class-validator";
+import { IsEmail, IsNotEmpty, MinLength } from "class-validator";
 
 export class CreateClientDTO {
     @ApiProperty()
     @IsNotEmpty()
+    @MinLength(4)
     name: string;
 
     @ApiProperty()
@@ -13,14 +14,17 @@ export class CreateClientDTO {
 
     @ApiProperty()
     @IsNotEmpty()
+    @MinLength(10)
     phone: string;
 
     @ApiProperty()
     @IsNotEmpty()
+    @MinLength(11)
     document: string;
 
     @ApiProperty()
     @IsNotEmpty()
+    @MinLength(5)
     address: string;
 }
 
