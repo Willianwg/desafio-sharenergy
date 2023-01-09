@@ -1,7 +1,7 @@
 export declare class UpdateClientDTO {
-    name?: string;
-    email?: string;
-    phone?: string;
-    document?: string;
-    address?: string;
+    name?: string | undefined;
+    email?: string | undefined;
+    phone?: string | undefined;
+    document?: string | undefined;
+    address?: string | undefined;
 }

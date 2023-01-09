@@ -1,18 +1,29 @@
 import { ApiProperty } from "@nestjs/swagger/dist/decorators/api-property.decorator";
+import { IsOptional, IsString } from "class-validator";
 
 export class UpdateClientDTO {
     @ApiProperty()
-    name?: string;
+    @IsOptional()
+    @IsString()
+    name?: string | undefined;
 
     @ApiProperty()
-    email?: string;
+    @IsOptional()
+    @IsString()
+    email?: string | undefined
 
     @ApiProperty()
-    phone?: string;
+    @IsOptional()
+    @IsString()
+    phone?: string | undefined
 
     @ApiProperty()
-    document?: string;
+    @IsOptional()
+    @IsString()
+    document?: string | undefined
 
     @ApiProperty()
-    address?: string;
+    @IsOptional()
+    @IsString()
+    address?: string | undefined;
 }
