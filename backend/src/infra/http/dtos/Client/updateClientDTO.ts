@@ -1,8 +1,18 @@
+import { ApiProperty } from "@nestjs/swagger/dist/decorators/api-property.decorator";
 
-export type UpdateClientDTO = {
-    name: string;
-    email: string;
-    phone: string;
-    document: string;
-    address: string;
+export class UpdateClientDTO {
+    @ApiProperty()
+    name?: string;
+
+    @ApiProperty()
+    email?: string;
+
+    @ApiProperty()
+    phone?: string;
+
+    @ApiProperty()
+    document?: string;
+
+    @ApiProperty()
+    address?: string;
 }

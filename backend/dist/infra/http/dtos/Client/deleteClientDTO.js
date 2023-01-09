@@ -10,10 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DeleteClientDTO = void 0;
+const api_property_decorator_1 = require("@nestjs/swagger/dist/decorators/api-property.decorator");
 const class_validator_1 = require("class-validator");
 class DeleteClientDTO {
 }
 __decorate([
+    (0, api_property_decorator_1.ApiProperty)(),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsUUID)(),
     __metadata("design:type", String)

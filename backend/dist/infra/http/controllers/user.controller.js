@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
 const common_1 = require("@nestjs/common");
+const api_bearer_decorator_1 = require("@nestjs/swagger/dist/decorators/api-bearer.decorator");
 const InvalidPassword_1 = require("../../../application/useCases/errors/InvalidPassword");
 const userNotFound_1 = require("../../../application/useCases/errors/userNotFound");
 const createUser_1 = require("../../../application/useCases/User/createUser");
@@ -21,6 +22,7 @@ const auth_service_1 = require("../../../auth/auth.service");
 const jwtAuth_guard_1 = require("../../../auth/jwtAuth.guard");
 const createUserDTO_1 = require("../dtos/User/createUserDTO");
 const loginDTO_1 = require("../dtos/User/loginDTO");
+const api_response_decorator_1 = require("@nestjs/swagger/dist/decorators/api-response.decorator");
 let UserController = class UserController {
     constructor(createUser, authentication) {
         this.createUser = createUser;
@@ -60,6 +62,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "create", null);
 __decorate([
+    (0, api_response_decorator_1.ApiResponse)({ type: loginDTO_1.LoginResponse }),
     (0, common_1.Post)("login"),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -68,6 +71,8 @@ __decorate([
 ], UserController.prototype, "loginUser", null);
 __decorate([
     (0, common_1.UseGuards)(jwtAuth_guard_1.JwtAuthGuard),
+    (0, api_bearer_decorator_1.ApiBearerAuth)(),
+    (0, api_response_decorator_1.ApiResponse)({ type: createUserDTO_1.AuthUserResponse }),
     (0, common_1.Get)("auth"),
     __param(0, (0, common_1.Request)()),
     __metadata("design:type", Function),

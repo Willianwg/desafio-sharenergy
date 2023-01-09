@@ -1,11 +1,14 @@
 import { Body, Controller, Get, Post, UseGuards, Request, NotFoundException, UnauthorizedException } from '@nestjs/common';
+import { ApiBearerAuth } from '@nestjs/swagger/dist/decorators/api-bearer.decorator';
 import { InvalidPassword } from 'src/application/useCases/errors/InvalidPassword';
 import { UserNotFound } from 'src/application/useCases/errors/userNotFound';
 import { CreateUser } from 'src/application/useCases/User/createUser';
 import { AuthService } from 'src/auth/auth.service';
 import { JwtAuthGuard } from 'src/auth/jwtAuth.guard';
-import { CreateUserDTO } from '../dtos/User/createUserDTO';
-import { LoginDTO } from '../dtos/User/loginDTO';
+import { AuthUserResponse, CreateUserDTO } from '../dtos/User/createUserDTO';
+import { LoginDTO, LoginResponse } from '../dtos/User/loginDTO';
+import { ApiResponse } from '@nestjs/swagger/dist/decorators/api-response.decorator';
+
 
 @Controller("user")
 export class UserController {
@@ -19,6 +22,7 @@ export class UserController {
         await this.createUser.execute(user);
     }
 
+    @ApiResponse({ type: LoginResponse })
     @Post("login")
     async loginUser(@Body() loginData: LoginDTO) {
         try {
@@ -37,7 +41,10 @@ export class UserController {
         }
     }
 
+
     @UseGuards(JwtAuthGuard)
+    @ApiBearerAuth()
+    @ApiResponse({ type: AuthUserResponse })
     @Get("auth")
     async authenticate(@Request() request: { user: { username: string, id: string } }) {
         return {

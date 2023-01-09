@@ -14,12 +14,14 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ClientController = void 0;
 const common_1 = require("@nestjs/common");
+const api_response_decorator_1 = require("@nestjs/swagger/dist/decorators/api-response.decorator");
 const createClient_1 = require("../../../application/useCases/Client/createClient");
 const deleteClient_1 = require("../../../application/useCases/Client/deleteClient");
 const getAllClients_1 = require("../../../application/useCases/Client/getAllClients");
 const getClientDetails_1 = require("../../../application/useCases/Client/getClientDetails");
 const updateClient_1 = require("../../../application/useCases/Client/updateClient");
 const createClientDTO_1 = require("../dtos/Client/createClientDTO");
+const updateClientDTO_1 = require("../dtos/Client/updateClientDTO");
 const httpClientMapper_1 = require("../mappers/httpClientMapper");
 let ClientController = class ClientController {
     constructor(createClient, updateClient, deleteClient, getClientDetails, getAllClients) {
@@ -62,6 +64,7 @@ let ClientController = class ClientController {
     }
 };
 __decorate([
+    (0, api_response_decorator_1.ApiResponse)({ type: createClientDTO_1.GetClientResponse }),
     (0, common_1.Get)(":id"),
     __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
@@ -69,6 +72,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], ClientController.prototype, "getClient", null);
 __decorate([
+    (0, api_response_decorator_1.ApiResponse)({ type: createClientDTO_1.GetAllClientsResponse }),
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
@@ -86,7 +90,7 @@ __decorate([
     __param(0, (0, common_1.Body)()),
     __param(1, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, String]),
+    __metadata("design:paramtypes", [updateClientDTO_1.UpdateClientDTO, String]),
     __metadata("design:returntype", Promise)
 ], ClientController.prototype, "update", null);
 __decorate([

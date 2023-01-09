@@ -1,12 +1,15 @@
 import { Body, Controller, Delete, Get, Post, Put, NotFoundException, Param } from '@nestjs/common';
+import { ApiProperty } from '@nestjs/swagger/dist/decorators/api-property.decorator';
+import { ApiResponse } from '@nestjs/swagger/dist/decorators/api-response.decorator';
 import { CreateClient } from 'src/application/useCases/Client/createClient';
 import { DeleteClient } from 'src/application/useCases/Client/deleteClient';
 import { GetAllClients } from 'src/application/useCases/Client/getAllClients';
 import { GetClientDetails } from 'src/application/useCases/Client/getClientDetails';
 import { UpdateClient } from 'src/application/useCases/Client/updateClient';
-import { CreateClientDTO } from '../dtos/Client/createClientDTO';
+import { CreateClientDTO, GetAllClientsResponse, GetClientResponse } from '../dtos/Client/createClientDTO';
 import { UpdateClientDTO } from '../dtos/Client/updateClientDTO';
 import { httpClientMapper } from '../mappers/httpClientMapper';
+
 
 @Controller("clients")
 export class ClientController {
@@ -18,6 +21,7 @@ export class ClientController {
         private readonly getAllClients: GetAllClients,
     ) { }
 
+    @ApiResponse({ type: GetClientResponse })
     @Get(":id")
     async getClient(@Param("id") id: string) {
         try {
@@ -31,6 +35,7 @@ export class ClientController {
         }
     }
 
+    @ApiResponse({ type: GetAllClientsResponse })
     @Get()
     async getAll() {
         const { clients } = await this.getAllClients.execute();
@@ -48,7 +53,6 @@ export class ClientController {
     @Put(":id/update")
     async update(@Body() updatedClientData: UpdateClientDTO, @Param("id") clientId: string): Promise<void> {
         await this.updateClient.execute({ ...updatedClientData, clientId });
-
     }
 
     @Delete(":id/delete")
