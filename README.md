@@ -4,6 +4,7 @@
 
 - Aplicação: https://sharenergy-willian.netlify.app/
 - Documentação da API: https://desafio-sharenergy-production.up.railway.app/api
+- [Vídeo explicativo](https://www.youtube.com/watch?v=vNV2hqdZV00).
 
 ## Instruções de inicialização
 ### Com Docker
