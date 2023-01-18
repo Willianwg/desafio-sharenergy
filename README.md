@@ -1,3 +1,68 @@
+# Sharenergy
+
+## Deploy
+
+- Aplicação: https://sharenergy-willian.netlify.app/
+- Documentação da API: https://desafio-sharenergy-production.up.railway.app/api
+- [Vídeo explicativo](https://www.youtube.com/watch?v=vNV2hqdZV00).
+
+## Instruções de inicialização
+### Com Docker
+1. Clone este repositório na branch willian-da-silva-guedes: `git clone -b willian-da-silva-guedes https://github.com/Willianwg/desafio-sharenergy.git`
+2. Entre na pasta do projeto: `cd desafio-sharenergy`
+3. Inicie os contêineres: `docker-compose up`
+4. Após os contêineres terem sido iniciados, acesse a aplicação em `http://localhost:5173/`
+
+- O frontend estará rodando na porta `5173`, e o backend estará rodando na porta `3000`
+- Caso queira acessar localmente a documentação da API feita com swagger, acesse `http://localhost:3000/api` em seu navegador
+
+### Sem Docker
+1. Clone este repositório na branch willian-da-silva-guedes: `git clone -b willian-da-silva-guedes https://github.com/Willianwg/desafio-sharenergy.git`
+2. Entre na pasta do projeto: `cd desafio-sharenergy`
+3.  Abra dois terminais
+4. No primeiro terminal entre na pasta do backend: `cd backend`; No segundo terminal entre na pasta do frontend: `cd frontend`
+5. Instale as dependências em ambos terminais: `npm install`
+6. Inicie a aplicação: `npm run start` para o backend, e `npm run dev` para o frontend
+4. Acesse a aplicação em `http://localhost:5173/`
+
+- O frontend estará rodando na porta `5173`, e o backend estará rodando na porta `3000`
+- Caso queira acessar localmente a documentação da API feita com swagger, acesse `http://localhost:3000/api` em seu navegador
+
+## Design
+Para este design decidi me basear em uma das cores utilizadas na paleta do site Sharenergy, presente em botões de destaque. Acreditei que, além deste verde ser uma bela cor a ser utilizada, também remeteria ao meio ambiente, que é positivamente impactado pela empresa.
+
+Aqui está uma amostra do design das primeiras duas páginas:
+
+### `Login page`
+
+![image](https://user-images.githubusercontent.com/51550522/211657268-291d6fe0-2d19-4ddc-bdb3-b46201245091.png)
+
+### `Home page`
+
+![image](https://user-images.githubusercontent.com/51550522/211657423-a61cce2e-8296-4352-b57f-76408b0d576a.png)
+
+## API
+
+Desenvolvida em NestJS, aplicando conceitos SOLID, Clean Architecture e DDD.
+
+![image](https://user-images.githubusercontent.com/51550522/211660771-5e618921-7899-4e32-b9b1-158b9972d6e4.png)
+
+Link da documentação: https://desafio-sharenergy-production.up.railway.app/api
+
+## Testes
+
+![image](https://user-images.githubusercontent.com/51550522/211654651-45601d1a-f313-4377-a597-dcecee7f0a79.png)
+
+
+## Vídeo
+
+ ### E aqui está o [Vídeo explicativo](https://www.youtube.com/watch?v=vNV2hqdZV00).
+
+
+
+
+
+
 # Desafio para o processo seletivo SHARENERGY 2023/01
 
 Repositório destinado aos interessados em participar do processo seletivo da SHARENERGY 2023/01. As vagas são voltadas para desenvolvimento de aplicações Web e Mobile.

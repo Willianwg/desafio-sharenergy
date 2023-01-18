@@ -1,0 +1,76 @@
+.dog-page {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+}
+
+.dog-card h1 {
+    color: #11b69a;
+    margin-bottom: 1rem;
+}
+
+.back-container {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.dog-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dog-card {
+    height: 80%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dog-card>img {
+    object-fit: cover;
+    width: 60%;
+    max-height: 25rem;
+}
+
+.arrow {
+    font-size: 20pt;
+    margin-right: 0.5rem;
+}
+
+.dog-card > .btn > img {
+    width: 1rem;
+    height: 1rem;
+    margin-left: 1rem;
+}
+
+.dog-card > .btn:active {
+   scale: 0.9;
+}
+
+.dog-card > .btn{
+   margin-top: 1.5rem;
+   display: flex;
+   align-items: center;
+}
+
+
+@media only screen and (max-width:600px) {
+    .dog-card>img {
+       width: 90%;
+    }
+}

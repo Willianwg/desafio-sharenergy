@@ -1,0 +1,38 @@
+.create-container {
+    padding: 1.5rem;
+}
+
+.create-inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-input {
+    padding: 0.5rem;
+    outline: none;
+    margin-top: 0.5rem;
+}
+
+.create-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+
+@media only screen and (max-width:650px) {
+    .create-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    .create-grid > button {
+        height: 2rem;
+    }
+
+    .create-container {
+        padding-inline: 4rem;
+    }
+}

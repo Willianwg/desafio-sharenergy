@@ -1,0 +1,51 @@
+.cat-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.cat-card > h1 {
+    color:#11b69a;
+    margin-bottom: 1rem;
+}
+
+.back-container {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+ }
+
+.cat-card {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cat-card > img {
+    width: 40vw;
+    min-width: 15rem;
+    max-height: 25rem;
+}
+
+.arrow {
+    margin-right: 5rem;
+}
+
+
+@media only screen and (max-width:950px) {
+    .cat-card > img {
+        width: 60%;
+        margin-bottom: 1rem;
+    }
+}
+
+
+@media only screen and (max-width:600px) {
+    .cat-card > img {
+        width: 90%;
+    }
+}
